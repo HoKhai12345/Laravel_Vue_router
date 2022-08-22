@@ -116,13 +116,13 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form role="form" class="text-start">
+                                    <form role="form" class="text-start"  method="post">
                                         <div class="input-group input-group-outline my-3">
                                             <label class="form-label">Email</label>
-                                            <input type="email" class="form-control">
+                                            <input type="email" name="email" id="email" class="form-control">
                                         </div>
                                         <div class="input-group input-group-outline mb-3">
-                                            <label class="form-label">Password</label>
+                                            <label class="form-label" name="password" id="password">Password</label>
                                             <input type="password" class="form-control">
                                         </div>
                                         <div class="form-check form-switch d-flex align-items-center mb-3">
@@ -131,6 +131,9 @@
                                         </div>
                                         <div class="text-center">
                                             <button type="button" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign in</button>
+                                            <button type="submit" :disabled="processing" @click="login" class="btn btn-primary btn-block">
+                                                                                    {{ processing ? "Please wait" : "Login" }}
+                                                                                </button>
                                         </div>
                                         <p class="mt-4 text-sm text-center">
                                             Don't have an account?
@@ -178,33 +181,59 @@
 </template>
 
 <script>
-    import { mapActions } from 'vuex'
+    import { reactive } from "vue";
+    import useLogin from "../composables/login";
+
     export default {
-        name:"login",
-        data(){
-            return {
-                auth:{
-                    email:"",
-                    password:""
-                },
-                processing:false
+        setup() {
+            const form = reactive({
+                'email': '',
+                'password': '',
+            })
+
+            const { errors, sendLogin } = useLogin()
+
+            const checkLogin = async () => {
+                await sendLogin({...form});
             }
-        },
-        methods:{
-            ...mapActions({
-                signIn:'auth/login'
-            }),
-            async login(){
-                this.processing = true
-                await axios.get('/sanctum/csrf-cookie')
-                await axios.post('/login',this.auth).then(({data})=>{
-                    this.signIn()
-                }).catch(({response:{data}})=>{
-                    alert(data.message)
-                }).finally(()=>{
-                    this.processing = false
-                })
-            },
+
+            return {
+                form,
+                errors,
+                checkLogin
+            }
         }
     }
 </script>
+
+<!--<script>-->
+<!--    import { mapActions } from 'vuex'-->
+<!--    export default {-->
+<!--        name:"login",-->
+<!--        data(){-->
+<!--            return {-->
+<!--                auth:{-->
+<!--                    email:"",-->
+<!--                    password:""-->
+<!--                },-->
+<!--                processing:false-->
+<!--            }-->
+<!--        },-->
+<!--        methods:{-->
+<!--            ...mapActions({-->
+<!--                signIn:'auth/login'-->
+<!--            }),-->
+<!--            async login(){-->
+<!--                this.processing = true-->
+<!--                await axios.get('/sanctum/csrf-cookie')-->
+<!--                await axios.post('/api/login',this.auth).then(({data})=>{-->
+<!--                    this.signIn()-->
+<!--                }).catch(({response:{data}})=>{-->
+<!--                    alert(data.message)-->
+<!--                }).finally(()=>{-->
+<!--                    this.processing = false-->
+<!--                })-->
+<!--            },-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
