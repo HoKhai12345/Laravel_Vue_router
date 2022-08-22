@@ -7,9 +7,10 @@ Vue.component('app', require('./components/App'));
 
 // import vue router, component và routes
 import App from './components/App';``
+import Layout from './components/Layout';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import routes from './routes';
+import routes from './router/index';
 
 // use router
 console.log("VueRouter",VueRouter);
@@ -25,7 +26,7 @@ const router = new VueRouter({
 // render tại component App và dùng router đã khai báo ở trên
 const app = new Vue({
     el: '#app',
-    render: h => h(App),
+    render: h => h(Layout),
     router
 });
 

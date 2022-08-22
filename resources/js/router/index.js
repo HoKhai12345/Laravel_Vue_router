@@ -20,7 +20,7 @@ const Dashboard = () => import('../components/Dashboard.vue' /* webpackChunkName
 /* Authenticated Component */
 
 
-const Routes = [
+const routes = [
     {
         name:"login",
         path:"/login",
@@ -58,10 +58,10 @@ const Routes = [
     }
 ]
 
-var router  = new VueRouter({
-    mode: 'history',
-    routes: Routes
-})
+// var router  = new VueRouter({
+//     mode: 'history',
+//     routes: Routes
+// })
 
 // router.beforeEach((to, from, next) => {
 //     document.title = `${to.meta.title} - ${process.env.MIX_APP_NAME}`
@@ -79,7 +79,8 @@ var router  = new VueRouter({
 //     }
 // })
 
-export default router
+export default routes
+
 // export default createRouter({
 //     history: createWebHistory(),
 //     Routes

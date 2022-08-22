@@ -94,107 +94,263 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", {
-    staticClass: "container h-100"
-  }, [_c("div", {
-    staticClass: "row h-100 align-items-center"
-  }, [_c("div", {
-    staticClass: "col-12 col-md-6 offset-md-3"
-  }, [_c("div", {
-    staticClass: "card shadow sm"
-  }, [_c("div", {
-    staticClass: "card-body"
-  }, [_c("h1", {
-    staticClass: "text-center"
-  }, [_vm._v("Login")]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("form", {
-    staticClass: "row",
-    attrs: {
-      action: "javascript:void(0)",
-      method: "post"
-    }
-  }, [_c("div", {
-    staticClass: "form-group col-12"
-  }, [_c("label", {
-    staticClass: "font-weight-bold",
-    attrs: {
-      "for": "email"
-    }
-  }, [_vm._v("Email")]), _vm._v(" "), _c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.auth.email,
-      expression: "auth.email"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      type: "text",
-      name: "email",
-      id: "email"
-    },
-    domProps: {
-      value: _vm.auth.email
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-
-        _vm.$set(_vm.auth, "email", $event.target.value);
-      }
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "form-group col-12"
-  }, [_c("label", {
-    staticClass: "font-weight-bold",
-    attrs: {
-      "for": "password"
-    }
-  }, [_vm._v("Password")]), _vm._v(" "), _c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.auth.password,
-      expression: "auth.password"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      type: "password",
-      name: "password",
-      id: "password"
-    },
-    domProps: {
-      value: _vm.auth.password
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-
-        _vm.$set(_vm.auth, "password", $event.target.value);
-      }
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "col-12 mb-2"
-  }, [_c("button", {
-    staticClass: "btn btn-primary btn-block",
-    attrs: {
-      type: "submit",
-      disabled: _vm.processing
-    },
-    on: {
-      click: _vm.login
-    }
-  }, [_vm._v("\n                                " + _vm._s(_vm.processing ? "Please wait" : "Login") + "\n                            ")])]), _vm._v(" "), _c("div", {
-    staticClass: "col-12 text-center"
-  }, [_c("label", [_vm._v("Don't have an account? "), _c("router-link", {
-    attrs: {
-      to: {
-        name: "register"
-      }
-    }
-  }, [_vm._v("Register Now!")])], 1)])])])])])])]);
+  return _vm._m(0);
 };
 
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {}, [_c("div", {
+    staticClass: "container position-sticky z-index-sticky top-0"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("nav", {
+    staticClass: "navbar navbar-expand-lg blur border-radius-xl top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4"
+  }, [_c("div", {
+    staticClass: "container-fluid ps-2 pe-0"
+  }, [_c("a", {
+    staticClass: "navbar-brand font-weight-bolder ms-lg-0 ms-3",
+    attrs: {
+      href: "../pages/dashboard.html"
+    }
+  }, [_vm._v("\n                                Material Dashboard 2\n                            ")]), _vm._v(" "), _c("button", {
+    staticClass: "navbar-toggler shadow-none ms-2",
+    attrs: {
+      type: "button",
+      "data-bs-toggle": "collapse",
+      "data-bs-target": "#navigation",
+      "aria-controls": "navigation",
+      "aria-expanded": "false",
+      "aria-label": "Toggle navigation"
+    }
+  }, [_c("span", {
+    staticClass: "navbar-toggler-icon mt-2"
+  }, [_c("span", {
+    staticClass: "navbar-toggler-bar bar1"
+  }), _vm._v(" "), _c("span", {
+    staticClass: "navbar-toggler-bar bar2"
+  }), _vm._v(" "), _c("span", {
+    staticClass: "navbar-toggler-bar bar3"
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "collapse navbar-collapse",
+    attrs: {
+      id: "navigation"
+    }
+  }, [_c("ul", {
+    staticClass: "navbar-nav mx-auto"
+  }, [_c("li", {
+    staticClass: "nav-item"
+  }, [_c("a", {
+    staticClass: "nav-link d-flex align-items-center me-2 active",
+    attrs: {
+      "aria-current": "page",
+      href: "../pages/dashboard.html"
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-chart-pie opacity-6 text-dark me-1"
+  }), _vm._v("\n                                            Dashboard\n                                        ")])]), _vm._v(" "), _c("li", {
+    staticClass: "nav-item"
+  }, [_c("a", {
+    staticClass: "nav-link me-2",
+    attrs: {
+      href: "../pages/profile.html"
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-user opacity-6 text-dark me-1"
+  }), _vm._v("\n                                            Profile\n                                        ")])]), _vm._v(" "), _c("li", {
+    staticClass: "nav-item"
+  }, [_c("a", {
+    staticClass: "nav-link me-2",
+    attrs: {
+      href: "../pages/sign-up.html"
+    }
+  }, [_c("i", {
+    staticClass: "fas fa-user-circle opacity-6 text-dark me-1"
+  }), _vm._v("\n                                            Sign Up\n                                        ")])]), _vm._v(" "), _c("li", {
+    staticClass: "nav-item"
+  }, [_c("a", {
+    staticClass: "nav-link me-2",
+    attrs: {
+      href: "../pages/sign-in.html"
+    }
+  }, [_c("i", {
+    staticClass: "fas fa-key opacity-6 text-dark me-1"
+  }), _vm._v("\n                                            Sign In\n                                        ")])])]), _vm._v(" "), _c("ul", {
+    staticClass: "navbar-nav d-lg-block d-none"
+  }, [_c("li", {
+    staticClass: "nav-item"
+  }, [_c("a", {
+    staticClass: "btn btn-sm mb-0 me-1 bg-gradient-dark",
+    attrs: {
+      href: "https://www.creative-tim.com/product/material-dashboard"
+    }
+  }, [_vm._v("Free download")])])])])])])])])]), _vm._v(" "), _c("main", {
+    staticClass: "main-content mt-0"
+  }, [_c("div", {
+    staticClass: "page-header align-items-start min-vh-100",
+    staticStyle: {
+      "background-image": "url('https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80')"
+    }
+  }, [_c("span", {
+    staticClass: "mask bg-gradient-dark opacity-6"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "container my-auto"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-lg-4 col-md-8 col-12 mx-auto"
+  }, [_c("div", {
+    staticClass: "card z-index-0 fadeIn3 fadeInBottom"
+  }, [_c("div", {
+    staticClass: "card-header p-0 position-relative mt-n4 mx-3 z-index-2"
+  }, [_c("div", {
+    staticClass: "bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1"
+  }, [_c("h4", {
+    staticClass: "text-white font-weight-bolder text-center mt-2 mb-0"
+  }, [_vm._v("Sign in")]), _vm._v(" "), _c("div", {
+    staticClass: "row mt-3"
+  }, [_c("div", {
+    staticClass: "col-2 text-center ms-auto"
+  }, [_c("a", {
+    staticClass: "btn btn-link px-3",
+    attrs: {
+      href: "javascript:;"
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-facebook text-white text-lg"
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-2 text-center px-1"
+  }, [_c("a", {
+    staticClass: "btn btn-link px-3",
+    attrs: {
+      href: "javascript:;"
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-github text-white text-lg"
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-2 text-center me-auto"
+  }, [_c("a", {
+    staticClass: "btn btn-link px-3",
+    attrs: {
+      href: "javascript:;"
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-google text-white text-lg"
+  })])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "card-body"
+  }, [_c("form", {
+    staticClass: "text-start",
+    attrs: {
+      role: "form"
+    }
+  }, [_c("div", {
+    staticClass: "input-group input-group-outline my-3"
+  }, [_c("label", {
+    staticClass: "form-label"
+  }, [_vm._v("Email")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "email"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "input-group input-group-outline mb-3"
+  }, [_c("label", {
+    staticClass: "form-label"
+  }, [_vm._v("Password")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "password"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-check form-switch d-flex align-items-center mb-3"
+  }, [_c("input", {
+    staticClass: "form-check-input",
+    attrs: {
+      type: "checkbox",
+      id: "rememberMe",
+      checked: ""
+    }
+  }), _vm._v(" "), _c("label", {
+    staticClass: "form-check-label mb-0 ms-3",
+    attrs: {
+      "for": "rememberMe"
+    }
+  }, [_vm._v("Remember me")])]), _vm._v(" "), _c("div", {
+    staticClass: "text-center"
+  }, [_c("button", {
+    staticClass: "btn bg-gradient-primary w-100 my-4 mb-2",
+    attrs: {
+      type: "button"
+    }
+  }, [_vm._v("Sign in")])]), _vm._v(" "), _c("p", {
+    staticClass: "mt-4 text-sm text-center"
+  }, [_vm._v("\n                                            Don't have an account?\n                                            "), _c("a", {
+    staticClass: "text-primary text-gradient font-weight-bold",
+    attrs: {
+      href: "../pages/sign-up.html"
+    }
+  }, [_vm._v("Sign up")])])])])])])])]), _vm._v(" "), _c("footer", {
+    staticClass: "footer position-absolute bottom-2 py-2 w-100"
+  }, [_c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "row align-items-center justify-content-lg-between"
+  }, [_c("div", {
+    staticClass: "col-12 col-md-6 my-auto"
+  }, [_c("div", {
+    staticClass: "copyright text-center text-sm text-white text-lg-start"
+  }, [_vm._v("\n                                    © 2022,\n                                    made with "), _c("i", {
+    staticClass: "fa fa-heart",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }), _vm._v(" by\n                                    "), _c("a", {
+    staticClass: "font-weight-bold text-white",
+    attrs: {
+      href: "https://www.creative-tim.com",
+      target: "_blank"
+    }
+  }, [_vm._v("Creative Tim")]), _vm._v("\n                                    for a better web.\n                                ")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-12 col-md-6"
+  }, [_c("ul", {
+    staticClass: "nav nav-footer justify-content-center justify-content-lg-end"
+  }, [_c("li", {
+    staticClass: "nav-item"
+  }, [_c("a", {
+    staticClass: "nav-link text-white",
+    attrs: {
+      href: "https://www.creative-tim.com",
+      target: "_blank"
+    }
+  }, [_vm._v("Creative Tim")])]), _vm._v(" "), _c("li", {
+    staticClass: "nav-item"
+  }, [_c("a", {
+    staticClass: "nav-link text-white",
+    attrs: {
+      href: "https://www.creative-tim.com/presentation",
+      target: "_blank"
+    }
+  }, [_vm._v("About Us")])]), _vm._v(" "), _c("li", {
+    staticClass: "nav-item"
+  }, [_c("a", {
+    staticClass: "nav-link text-white",
+    attrs: {
+      href: "https://www.creative-tim.com/blog",
+      target: "_blank"
+    }
+  }, [_vm._v("Blog")])]), _vm._v(" "), _c("li", {
+    staticClass: "nav-item"
+  }, [_c("a", {
+    staticClass: "nav-link pe-0 text-white",
+    attrs: {
+      href: "https://www.creative-tim.com/license",
+      target: "_blank"
+    }
+  }, [_vm._v("License")])])])])])])])])])]);
+}];
 render._withStripped = true;
 
 
