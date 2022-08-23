@@ -19,6 +19,7 @@ const DahboardLayout = () => import('../components/Layouts/Dashboard.vue' /* web
 const Dashboard = () => import('../components/Dashboard.vue' /* webpackChunkName: "resource/js/components/dashboard" */)
 /* Authenticated Component */
 
+const listUser = () => import('../components/User.vue')
 
 const routes = [
     {
@@ -52,6 +53,23 @@ const routes = [
                 component: Dashboard,
                 meta:{
                     title:`Dashboard`
+                }
+            }
+        ]
+    },
+    {
+        path:"/users/list",
+        component:listUser,
+        // meta:{
+        //     middleware:"auth"
+        // },
+        children:[
+            {
+                name:"dashboard",
+                path: '/',
+                component: listUser,
+                meta:{
+                    title:`listUser`
                 }
             }
         ]

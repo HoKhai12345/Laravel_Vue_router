@@ -5670,10 +5670,178 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("router-view");
+  return _c("div", [_vm._m(0), _vm._v(" "), _c("main", {
+    staticClass: "main-content position-relative max-height-vh-100 h-100 border-radius-lg ps ps--active-y"
+  }, [_c("router-view")], 1)]);
 };
 
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("aside", {
+    staticClass: "sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-gradient-dark",
+    attrs: {
+      id: "sidenav-main"
+    }
+  }, [_c("div", {
+    staticClass: "sidenav-header"
+  }, [_c("i", {
+    staticClass: "fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none",
+    attrs: {
+      "aria-hidden": "true",
+      id: "iconSidenav"
+    }
+  }), _vm._v(" "), _c("a", {
+    staticClass: "navbar-brand m-0",
+    attrs: {
+      href: " https://demos.creative-tim.com/material-dashboard/pages/dashboard ",
+      target: "_blank"
+    }
+  }, [_c("span", {
+    staticClass: "ms-1 font-weight-bold text-white"
+  }, [_vm._v("Material Dashboard 2")])])]), _vm._v(" "), _c("hr", {
+    staticClass: "horizontal light mt-0 mb-2"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "collapse navbar-collapse w-auto",
+    attrs: {
+      id: "sidenav-collapse-main"
+    }
+  }, [_c("ul", {
+    staticClass: "navbar-nav"
+  }, [_c("li", {
+    staticClass: "nav-item"
+  }, [_c("a", {
+    staticClass: "nav-link text-white active bg-gradient-primary",
+    attrs: {
+      href: "../pages/dashboard.html"
+    }
+  }, [_c("div", {
+    staticClass: "text-white text-center me-2 d-flex align-items-center justify-content-center"
+  }, [_c("i", {
+    staticClass: "material-icons opacity-10"
+  }, [_vm._v("dashboard")])]), _vm._v(" "), _c("span", {
+    staticClass: "nav-link-text ms-1"
+  }, [_vm._v("Dashboard")])])]), _vm._v(" "), _c("li", {
+    staticClass: "nav-item"
+  }, [_c("a", {
+    staticClass: "nav-link text-white",
+    attrs: {
+      href: "../pages/tables.html"
+    }
+  }, [_c("div", {
+    staticClass: "text-white text-center me-2 d-flex align-items-center justify-content-center"
+  }, [_c("i", {
+    staticClass: "material-icons opacity-10"
+  }, [_vm._v("table_view")])]), _vm._v(" "), _c("span", {
+    staticClass: "nav-link-text ms-1"
+  }, [_vm._v("Tables")])])]), _vm._v(" "), _c("li", {
+    staticClass: "nav-item"
+  }, [_c("a", {
+    staticClass: "nav-link text-white",
+    attrs: {
+      href: "../pages/billing.html"
+    }
+  }, [_c("div", {
+    staticClass: "text-white text-center me-2 d-flex align-items-center justify-content-center"
+  }, [_c("i", {
+    staticClass: "material-icons opacity-10"
+  }, [_vm._v("receipt_long")])]), _vm._v(" "), _c("span", {
+    staticClass: "nav-link-text ms-1"
+  }, [_vm._v("Billing")])])]), _vm._v(" "), _c("li", {
+    staticClass: "nav-item"
+  }, [_c("a", {
+    staticClass: "nav-link text-white",
+    attrs: {
+      href: "../pages/virtual-reality.html"
+    }
+  }, [_c("div", {
+    staticClass: "text-white text-center me-2 d-flex align-items-center justify-content-center"
+  }, [_c("i", {
+    staticClass: "material-icons opacity-10"
+  }, [_vm._v("view_in_ar")])]), _vm._v(" "), _c("span", {
+    staticClass: "nav-link-text ms-1"
+  }, [_vm._v("Virtual Reality")])])]), _vm._v(" "), _c("li", {
+    staticClass: "nav-item"
+  }, [_c("a", {
+    staticClass: "nav-link text-white",
+    attrs: {
+      href: "../pages/rtl.html"
+    }
+  }, [_c("div", {
+    staticClass: "text-white text-center me-2 d-flex align-items-center justify-content-center"
+  }, [_c("i", {
+    staticClass: "material-icons opacity-10"
+  }, [_vm._v("format_textdirection_r_to_l")])]), _vm._v(" "), _c("span", {
+    staticClass: "nav-link-text ms-1"
+  }, [_vm._v("RTL")])])]), _vm._v(" "), _c("li", {
+    staticClass: "nav-item"
+  }, [_c("a", {
+    staticClass: "nav-link text-white",
+    attrs: {
+      href: "../pages/notifications.html"
+    }
+  }, [_c("div", {
+    staticClass: "text-white text-center me-2 d-flex align-items-center justify-content-center"
+  }, [_c("i", {
+    staticClass: "material-icons opacity-10"
+  }, [_vm._v("notifications")])]), _vm._v(" "), _c("span", {
+    staticClass: "nav-link-text ms-1"
+  }, [_vm._v("Notifications")])])]), _vm._v(" "), _c("li", {
+    staticClass: "nav-item mt-3"
+  }, [_c("h6", {
+    staticClass: "ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8"
+  }, [_vm._v("Account pages")])]), _vm._v(" "), _c("li", {
+    staticClass: "nav-item"
+  }, [_c("a", {
+    staticClass: "nav-link text-white",
+    attrs: {
+      href: "../pages/profile.html"
+    }
+  }, [_c("div", {
+    staticClass: "text-white text-center me-2 d-flex align-items-center justify-content-center"
+  }, [_c("i", {
+    staticClass: "material-icons opacity-10"
+  }, [_vm._v("person")])]), _vm._v(" "), _c("span", {
+    staticClass: "nav-link-text ms-1"
+  }, [_vm._v("Profile")])])]), _vm._v(" "), _c("li", {
+    staticClass: "nav-item"
+  }, [_c("a", {
+    staticClass: "nav-link text-white",
+    attrs: {
+      href: "../pages/sign-in.html"
+    }
+  }, [_c("div", {
+    staticClass: "text-white text-center me-2 d-flex align-items-center justify-content-center"
+  }, [_c("i", {
+    staticClass: "material-icons opacity-10"
+  }, [_vm._v("login")])]), _vm._v(" "), _c("span", {
+    staticClass: "nav-link-text ms-1"
+  }, [_vm._v("Sign In")])])]), _vm._v(" "), _c("li", {
+    staticClass: "nav-item"
+  }, [_c("a", {
+    staticClass: "nav-link text-white",
+    attrs: {
+      href: "../pages/sign-up.html"
+    }
+  }, [_c("div", {
+    staticClass: "text-white text-center me-2 d-flex align-items-center justify-content-center"
+  }, [_c("i", {
+    staticClass: "material-icons opacity-10"
+  }, [_vm._v("assignment")])]), _vm._v(" "), _c("span", {
+    staticClass: "nav-link-text ms-1"
+  }, [_vm._v("Sign Up")])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "sidenav-footer position-absolute w-100 bottom-0"
+  }, [_c("div", {
+    staticClass: "mx-3"
+  }, [_c("a", {
+    staticClass: "btn bg-gradient-primary mt-4 w-100",
+    attrs: {
+      href: "https://www.creative-tim.com/product/material-dashboard-pro?ref=sidebarfree",
+      type: "button"
+    }
+  }, [_vm._v("Upgrade to pro")])])])]);
+}];
 render._withStripped = true;
 
 
@@ -5809,6 +5977,10 @@ var Dashboard = function Dashboard() {
 /* Authenticated Component */
 
 
+var listUser = function listUser() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_User_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../components/User.vue */ "./resources/js/components/User.vue"));
+};
+
 var routes = [{
   name: "login",
   path: "/login",
@@ -5837,6 +6009,20 @@ var routes = [{
     component: Dashboard,
     meta: {
       title: "Dashboard"
+    }
+  }]
+}, {
+  path: "/users/list",
+  component: listUser,
+  // meta:{
+  //     middleware:"auth"
+  // },
+  children: [{
+    name: "dashboard",
+    path: '/',
+    component: listUser,
+    meta: {
+      title: "listUser"
     }
   }]
 }]; // var router  = new VueRouter({
@@ -32100,7 +32286,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "watchSyncEffect": () => (/* binding */ watchSyncEffect)
 /* harmony export */ });
 /*!
- * Vue.js v2.7.8
+ * Vue.js v2.7.9
  * (c) 2014-2022 Evan You
  * Released under the MIT License.
  */
@@ -32750,13 +32936,13 @@ if (true) {
             'referenced during render. Make sure that this property is reactive, ' +
             'either in the data option, or for class-based components, by ' +
             'initializing the property. ' +
-            'See: https://vuejs.org/v2/guide/reactivity.html#Declaring-Reactive-Properties.', target);
+            'See: https://v2.vuejs.org/v2/guide/reactivity.html#Declaring-Reactive-Properties.', target);
     };
     var warnReservedPrefix_1 = function (target, key) {
         warn$2("Property \"".concat(key, "\" must be accessed with \"$data.").concat(key, "\" because ") +
             'properties starting with "$" or "_" are not proxied in the Vue instance to ' +
             'prevent conflicts with Vue internals. ' +
-            'See: https://vuejs.org/v2/api/#data', target);
+            'See: https://v2.vuejs.org/v2/api/#data', target);
     };
     var hasProxy_1 = typeof Proxy !== 'undefined' && isNative(Proxy);
     if (hasProxy_1) {
@@ -35499,8 +35685,7 @@ function doWatch(source, cb, _a) {
     var oldValue = isMultiSource ? [] : INITIAL_WATCHER_VALUE;
     // overwrite default run
     watcher.run = function () {
-        if (!watcher.active &&
-            !(flush === 'pre' && instance && instance._isBeingDestroyed)) {
+        if (!watcher.active) {
             return;
         }
         if (cb) {
@@ -36074,17 +36259,21 @@ var onBeforeUpdate = createLifeCycle('beforeUpdate');
 var onUpdated = createLifeCycle('updated');
 var onBeforeUnmount = createLifeCycle('beforeDestroy');
 var onUnmounted = createLifeCycle('destroyed');
-var onErrorCaptured = createLifeCycle('errorCaptured');
 var onActivated = createLifeCycle('activated');
 var onDeactivated = createLifeCycle('deactivated');
 var onServerPrefetch = createLifeCycle('serverPrefetch');
 var onRenderTracked = createLifeCycle('renderTracked');
 var onRenderTriggered = createLifeCycle('renderTriggered');
+var injectErrorCapturedHook = createLifeCycle('errorCaptured');
+function onErrorCaptured(hook, target) {
+    if (target === void 0) { target = currentInstance; }
+    injectErrorCapturedHook(hook, target);
+}
 
 /**
  * Note: also update dist/vue.runtime.mjs when adding new exports to this file.
  */
-var version = '2.7.8';
+var version = '2.7.9';
 /**
  * @internal type is manually declared in <root>/types/v3-define-component.d.ts
  */
@@ -36143,11 +36332,16 @@ var uid$1 = 0;
  */
 var Watcher = /** @class */ (function () {
     function Watcher(vm, expOrFn, cb, options, isRenderWatcher) {
-        recordEffectScope(this, activeEffectScope || (vm ? vm._scope : undefined));
-        if ((this.vm = vm)) {
-            if (isRenderWatcher) {
-                vm._watcher = this;
-            }
+        recordEffectScope(this, 
+        // if the active effect scope is manually created (not a component scope),
+        // prioritize it
+        activeEffectScope && !activeEffectScope._vm
+            ? activeEffectScope
+            : vm
+                ? vm._scope
+                : undefined);
+        if ((this.vm = vm) && isRenderWatcher) {
+            vm._watcher = this;
         }
         // options
         if (options) {
@@ -36418,7 +36612,7 @@ function initData(vm) {
         data = {};
          true &&
             warn$2('data functions should return an object:\n' +
-                'https://vuejs.org/v2/guide/components.html#data-Must-Be-a-Function', vm);
+                'https://v2.vuejs.org/v2/guide/components.html#data-Must-Be-a-Function', vm);
     }
     // proxy data on instance
     var keys = Object.keys(data);
@@ -36716,6 +36910,7 @@ function initMixin$1(Vue) {
         vm.__v_skip = true;
         // effect scope
         vm._scope = new EffectScope(true /* detached */);
+        vm._scope._vm = true;
         // merge options
         if (options && options._isComponent) {
             // optimize internal component instantiation
@@ -39269,7 +39464,16 @@ function normalizeDirectives(dirs, vm) {
         }
         res[getRawDirName(dir)] = dir;
         if (vm._setupState && vm._setupState.__sfc) {
-            dir.def = dir.def || resolveAsset(vm, '_setupState', 'v-' + dir.name);
+            var setupDef = dir.def || resolveAsset(vm, '_setupState', 'v-' + dir.name);
+            if (typeof setupDef === 'function') {
+                dir.def = {
+                    bind: setupDef,
+                    update: setupDef,
+                };
+            }
+            else {
+                dir.def = setupDef;
+            }
         }
         dir.def = dir.def || resolveAsset(vm.$options, 'directives', dir.name, true);
     }
@@ -45417,7 +45621,7 @@ var index = {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\xampp\\\\htdocs\\\\Laravel_Vue_router"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"C:\\\\xampp\\\\htdocs\\\\Laravel_Vue_router","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\xampp\\\\htdocs\\\\larasanctum-authvue"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"C:\\\\xampp\\\\htdocs\\\\larasanctum-authvue","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
 
 /***/ })
 
@@ -45528,7 +45732,7 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\xampp\\\\htdocs\\\
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resource/js/components/login":1,"resource/js/components/register":1,"resource/js/components/layouts/dashboard":1,"resource/js/components/dashboard":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resource/js/components/login":1,"resource/js/components/register":1,"resource/js/components/layouts/dashboard":1,"resource/js/components/dashboard":1,"resources_js_components_User_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

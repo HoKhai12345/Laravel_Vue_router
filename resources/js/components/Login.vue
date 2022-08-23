@@ -116,14 +116,14 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form role="form" class="text-start"  method="post">
+                                    <form role="form" class="text-start"  method="post"   action="javascript:void(0)">
                                         <div class="input-group input-group-outline my-3">
                                             <label class="form-label">Email</label>
-                                            <input type="email" name="email" id="email" class="form-control">
+                                            <input type="email" name="email" id="email" v-model="auth.email" class="form-control">
                                         </div>
                                         <div class="input-group input-group-outline mb-3">
-                                            <label class="form-label" name="password" id="password">Password</label>
-                                            <input type="password" class="form-control">
+                                            <label class="form-label" name="password">Password</label>
+                                            <input type="password"  v-model="auth.password" id="password" class="form-control">
                                         </div>
                                         <div class="form-check form-switch d-flex align-items-center mb-3">
                                             <input class="form-check-input" type="checkbox" id="rememberMe" checked>
@@ -185,7 +185,7 @@
     import useLogin from "../composables/login";
 
     export default {
-        setup() {
+        login() {
             const form = reactive({
                 'email': '',
                 'password': '',
@@ -206,34 +206,35 @@
     }
 </script>
 
-<!--<script>-->
-<!--    import { mapActions } from 'vuex'-->
-<!--    export default {-->
-<!--        name:"login",-->
-<!--        data(){-->
-<!--            return {-->
-<!--                auth:{-->
-<!--                    email:"",-->
-<!--                    password:""-->
-<!--                },-->
-<!--                processing:false-->
-<!--            }-->
-<!--        },-->
-<!--        methods:{-->
-<!--            ...mapActions({-->
-<!--                signIn:'auth/login'-->
-<!--            }),-->
-<!--            async login(){-->
-<!--                this.processing = true-->
-<!--                await axios.get('/sanctum/csrf-cookie')-->
-<!--                await axios.post('/api/login',this.auth).then(({data})=>{-->
-<!--                    this.signIn()-->
-<!--                }).catch(({response:{data}})=>{-->
-<!--                    alert(data.message)-->
-<!--                }).finally(()=>{-->
-<!--                    this.processing = false-->
-<!--                })-->
-<!--            },-->
-<!--        }-->
-<!--    }-->
-<!--</script>-->
+<script>
+    import { mapActions } from 'vuex'
+    export default {
+        name:"login",
+        data(){
+            return {
+                auth:{
+                    email:"",
+                    password:""
+                },
+                processing:false
+            }
+        },
+        methods:{
+            ...mapActions({
+                signIn:'auth/login'
+            }),
+            async login(){
+                console.log("this.auth" , this.auth);
+                this.processing = true
+                await axios.get('/sanctum/csrf-cookie')
+                await axios.post('/api/login',this.auth).then(({data})=>{
+                    this.signIn()
+                }).catch(({response:{data}})=>{
+                    alert(data.message)
+                }).finally(()=>{
+                    this.processing = false
+                })
+            },
+        }
+    }
+</script>
