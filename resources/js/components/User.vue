@@ -21,6 +21,7 @@
                                         <label>name : </label>
                                         <input name="username" v-model="textSearch" id="username" @change="(e) => onChangeUser(e, 5 , 0)"
                                                placeholder="user name"/>
+                                        <h1>{{publishedBooksMessage}}</h1>
                                         <button type="submit" :disabled="processing" class="btn btn-primary btn-block">
                                             {{ processing ? "Please wait" : "Submit" }}
                                         </button>
@@ -121,6 +122,12 @@
         },
         components: {
             TableComponent
+        },
+        computed:{
+            publishedBooksMessage() {
+                // `this` points to the component instance
+                return this.textSearch != "" ? 'Yes' : 'No'
+            }
         }
 
     }

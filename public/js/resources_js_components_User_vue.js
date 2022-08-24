@@ -113,6 +113,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   components: {
     TableComponent: _components_childComponent_Table__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  computed: {
+    publishedBooksMessage: function publishedBooksMessage() {
+      // `this` points to the component instance
+      return this.textSearch != "" ? 'Yes' : 'No';
+    }
   }
 });
 
@@ -198,7 +204,7 @@ var render = function render() {
         _vm.textSearch = $event.target.value;
       }
     }
-  }), _vm._v(" "), _c("button", {
+  }), _vm._v(" "), _c("h1", [_vm._v(_vm._s(_vm.publishedBooksMessage))]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-primary btn-block",
     attrs: {
       type: "submit",
