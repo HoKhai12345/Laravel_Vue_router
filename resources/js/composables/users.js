@@ -13,7 +13,9 @@ export default function useUser() {
 
     const getUser = async (param) => {
         let response = await axios.get('/api/users/list' , { params: param })
-        companies.value = response.data.data;
+         const result = response.data.data;
+        console.log("RESULT" , result);
+        return result
     }
 
     const sendLogin = async (data) => {
