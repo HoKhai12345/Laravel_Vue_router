@@ -4,7 +4,7 @@
         <div class="container-fluid py-4">
             <div class="row">
                 <div class="col-12">
-
+                <strong><a href="javascript:" id="homeRedirect" value="home" @click="handleRedirect" >Home</a> / <a>Users</a> </strong>
                 </div>
                 <div class="col-12">
                     <div class="card my-4">
@@ -21,7 +21,6 @@
                                         <label>name : </label>
                                         <input name="username" v-model="textSearch" id="username" @change="(e) => onChangeUser(e, 3 , 0 , textSearch)"
                                                placeholder="user name"/>
-                                        <h1>{{publishedBooksMessage}}</h1>
                                         <button type="submit" :disabled="processing" class="btn btn-primary btn-block">
                                             {{ processing ? "Please wait" : "Submit" }}
                                         </button>
@@ -29,8 +28,6 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="table-responsive p-0">
-<!--                                        <TableComponent :listData=listData />-->
-<!--                                        <TableComponent :textSearch=textSearch :listData=items :pagesNumber=pagesNumber :isActive=isActived :pagination=pagination />-->
                                         <table class="table align-items-center mb-0">
                                             <thead>
                                             <tr>
@@ -103,26 +100,6 @@
                                             </ul>
                                         </nav>
                                         <!-- Pagination -->
-<!--                                        <nav aria-label="Page navigation example">-->
-<!--                                            <ul class="pagination">-->
-<!--                                                <li class="page-item" v-if="pagination.current_page > 1" >-->
-<!--                                                    <a class="page-link" href="#" aria-label="Previous"-->
-<!--                                                       @click.prevent="changePage(pagination.current_page - 1)">-->
-<!--                                                        <<-->
-<!--                                                    </a>-->
-<!--                                                </li>-->
-<!--                                                <li class="page-item" v-for="page in pagesNumber"  v-bind:class="[ page == isActived ? 'active' : '']">-->
-<!--                                                    <a  :style="[page == isActived ? {'color': 'white'} : {'color': 'black'}]"  class="page-link" href="#" @click.prevent="changePage(page)">{{ page }}</a>-->
-<!--                                                </li>-->
-<!--                                                <li class="page-item" v-if="pagination.current_page < pagination.last_page">-->
-<!--                                                    <a class="page-link" href="#" aria-label="Next" @click.prevent="changePage(pagination.current_page + 1)">-->
-<!--                                                        <span aria-hidden="true">»</span>-->
-<!--                                                    </a>-->
-<!--                                                </li>-->
-<!--                                            </ul>-->
-<!--                                        </nav>-->
-<!--                                        <Pagination :pagesNumber=pagesNumber :isActive=isActived :pagination=pagination />-->
-
                                     </div>
                                 </div>
                             </div>
@@ -181,8 +158,9 @@
     import useUser from "../composables/users";
     import TableComponent from "../components/childComponent/Table";
     import Pagination from "../components/Pagination";
-    export default {
+    import  useRouter  from '../router/index';
 
+    export default {
         name: 'User',
         data() {
             return {
@@ -208,6 +186,11 @@
             this.getVueItems(this.pagination.current_page);
         },
         methods: {
+
+            handleRedirect: function(e){
+                const router = useRouter;
+                router.push({name: 'login'})
+            },
             getVueItems: function(page , limit ,textSearch){
                 axios.get('/api/users/listPagination?page='+page+'&limit='+limit+'&username='+textSearch).then((response) => {
                     console.log("response" , response.data.data.data);
@@ -220,29 +203,18 @@
                 this.pagination.current_page = page;
                 this.getVueItems(page , limit , username);
             },
-            async dataUser(limit , offset ,e) {
-                const {errors, getUser} = await useUser()
-                const getData = await getUser({"limit": limit, "skip": offset, "username": e.target.value});
-                return getData
-            },
-            async onChangeUser(e, limit, offset , textSearch) {
-                const {errors, getUser} = await useUser();
-               // const data = await this.dataUser(limit , offset , e);
-                console.log("2");
-                const data = await axios.get('/api/users/listPagination?page='+1+'&limit='+limit+'&username='+e.target.value).then((response) => {
-                    console.log("response.data.data" , response.data.data.data);
+            async onChangeUser(e, limit) {
+                const {errors, getUser , getUserWithPaginate} = await useUser();
+                const response = await getUserWithPaginate({"page":1 , "limit": limit , "username": e.target.value});
                     this.listData = response.data.data.data;
                     this.items = response.data.data.data;
                     this.pagination = response.data.pagination;
-                })
                     this.processing = true
                 setTimeout(()=>{this.processing = false;
-                } , 2000)
-                // gắn cho state listData giá trị list users
-                // this.listData = data
+                } , 1000)
                 return {
                     errors,
-                    data
+                    response
                 }
             }
         },
