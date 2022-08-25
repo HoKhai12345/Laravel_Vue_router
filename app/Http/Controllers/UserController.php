@@ -25,5 +25,27 @@ class UserController extends Controller
             'data' => $listUser,
         ]);
     }
+    public function getUserWithPagination(Request $request){
+        $limit = $request->query('limit');
+        $skip = $request->query('skip');
+        $user = $request->query("username");
+        $dataFind = ["username"=>$user];
+        $items = User::where('name', 'LIKE', "%{$user}%")->paginate($limit);
+//        $items = User::latest()->paginate(4);
+        $response = [
+            'pagination' => [
+                'total' => $items->total(),
+                'per_page' => $items->perPage(),
+                'current_page' => $items->currentPage(),
+                'last_page' => $items->lastPage(),
+                'from' => $items->firstItem(),
+                'to' => $items->lastItem()
+            ],
+            'data' => $items
+        ];
+
+        return response()->json($response);
+
+    }
 
 }

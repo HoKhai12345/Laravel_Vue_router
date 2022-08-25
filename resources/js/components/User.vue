@@ -19,7 +19,7 @@
                                     <form class="ml-2" action="javascript:void(0)" method="get">
                                         <p><b>Text search: {{ textSearch }}</b></p>
                                         <label>name : </label>
-                                        <input name="username" v-model="textSearch" id="username" @change="(e) => onChangeUser(e, 5 , 0)"
+                                        <input name="username" v-model="textSearch" id="username" @change="(e) => onChangeUser(e, 3 , 0 , textSearch)"
                                                placeholder="user name"/>
                                         <h1>{{publishedBooksMessage}}</h1>
                                         <button type="submit" :disabled="processing" class="btn btn-primary btn-block">
@@ -29,7 +29,100 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="table-responsive p-0">
-                                        <TableComponent :listData=listData />
+<!--                                        <TableComponent :listData=listData />-->
+<!--                                        <TableComponent :textSearch=textSearch :listData=items :pagesNumber=pagesNumber :isActive=isActived :pagination=pagination />-->
+                                        <table class="table align-items-center mb-0">
+                                            <thead>
+                                            <tr>
+                                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                    Name
+                                                </th>
+                                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                    Email
+                                                </th>
+                                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                    CreatedAt
+                                                </th>
+                                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                    UpdatedAt
+                                                </th>
+                                                <th class="text-secondary opacity-7"></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody v-for="item in listData">
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div>
+                                                            <!--                                                    <img src="../assets/img/team-4.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user6">-->
+                                                        </div>
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <h6 class="mb-0 text-sm">{{item.name}}</h6>
+                                                            <p class="text-xs text-secondary mb-0">
+                                                                {{item.email}}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p class="text-xs font-weight-bold mb-0">{{item.email}}</p>
+                                                    <!--                                                    <p class="text-xs text-secondary mb-0">Developer</p>-->
+                                                </td>
+                                                <td class="align-middle text-center text-sm">
+                                                    <span class="badge badge-sm bg-gradient-secondary">{{item.created_at}}</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span
+                                                        class="text-secondary text-xs font-weight-bold">{{item.updated_at}}</span>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <a href="javascript:;"
+                                                       class="text-secondary font-weight-bold text-xs"
+                                                       data-toggle="tooltip" data-original-title="Edit user">
+                                                        Edit
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <nav aria-label="Page navigation example">
+                                            <ul class="pagination">
+                                                <li class="page-item" v-if="pagination.current_page > 1" >
+                                                    <a class="page-link" href="#" aria-label="Previous"
+                                                       @click.prevent="changePage(pagination.current_page - 1 , 3 , textSearch)">
+                                                        <<
+                                                    </a>
+                                                </li>
+                                                <li class="page-item" v-for="page in pagesNumber"  v-bind:class="[ page == isActived ? 'active' : '']">
+                                                    <a  :style="[page == isActived ? {'color': 'white'} : {'color': 'black'}]"  class="page-link" href="#" @click.prevent="changePage(page , 3 , textSearch)">{{ page }}</a>
+                                                </li>
+                                                <li class="page-item" v-if="pagination.current_page < pagination.last_page">
+                                                    <a class="page-link" href="#" aria-label="Next" @click.prevent="changePage(pagination.current_page + 1 , 3 , textSearch)">
+                                                        <span aria-hidden="true">»</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                        <!-- Pagination -->
+<!--                                        <nav aria-label="Page navigation example">-->
+<!--                                            <ul class="pagination">-->
+<!--                                                <li class="page-item" v-if="pagination.current_page > 1" >-->
+<!--                                                    <a class="page-link" href="#" aria-label="Previous"-->
+<!--                                                       @click.prevent="changePage(pagination.current_page - 1)">-->
+<!--                                                        <<-->
+<!--                                                    </a>-->
+<!--                                                </li>-->
+<!--                                                <li class="page-item" v-for="page in pagesNumber"  v-bind:class="[ page == isActived ? 'active' : '']">-->
+<!--                                                    <a  :style="[page == isActived ? {'color': 'white'} : {'color': 'black'}]"  class="page-link" href="#" @click.prevent="changePage(page)">{{ page }}</a>-->
+<!--                                                </li>-->
+<!--                                                <li class="page-item" v-if="pagination.current_page < pagination.last_page">-->
+<!--                                                    <a class="page-link" href="#" aria-label="Next" @click.prevent="changePage(pagination.current_page + 1)">-->
+<!--                                                        <span aria-hidden="true">»</span>-->
+<!--                                                    </a>-->
+<!--                                                </li>-->
+<!--                                            </ul>-->
+<!--                                        </nav>-->
+<!--                                        <Pagination :pagesNumber=pagesNumber :isActive=isActived :pagination=pagination />-->
+
                                     </div>
                                 </div>
                             </div>
@@ -38,7 +131,6 @@
                     </div>
                 </div>
             </div>
-
             <footer class="footer py-4  ">
                 <div class="container-fluid">
                     <div class="row align-items-center justify-content-lg-between">
@@ -85,8 +177,10 @@
 
 
     import {reactive, onMounted} from "vue";
+    import axios from "axios";
     import useUser from "../composables/users";
     import TableComponent from "../components/childComponent/Table";
+    import Pagination from "../components/Pagination";
     export default {
 
         name: 'User',
@@ -95,38 +189,96 @@
                 processing: false,
                 textSearch: "",
                 listData : [],
+                items: [],
+                pagination: {
+                    total: 0,
+                    per_page: 0,
+                    from: 1,
+                    to: 0,
+                    current_page: 1
+                },
+                offset: 4,
+                formErrors:{},
+                formErrorsUpdate:{},
+                newItem : {'title':'','description':''},
+                fillItem : {'title':'','description':'','id':''}
             }
         },
-
+        ready : function(){
+            this.getVueItems(this.pagination.current_page);
+        },
         methods: {
-
+            getVueItems: function(page , limit ,textSearch){
+                axios.get('/api/users/listPagination?page='+page+'&limit='+limit+'&username='+textSearch).then((response) => {
+                    console.log("response" , response.data.data.data);
+                    this.listData =  response.data.data.data;
+                    this.items = response.data.data.data;
+                    this.pagination = response.data.pagination;
+                });
+            },
+            changePage: function (page , limit , username) {
+                this.pagination.current_page = page;
+                this.getVueItems(page , limit , username);
+            },
             async dataUser(limit , offset ,e) {
                 const {errors, getUser} = await useUser()
                 const getData = await getUser({"limit": limit, "skip": offset, "username": e.target.value});
                 return getData
             },
-            async onChangeUser(e, limit, offset) {
-                console.log("PARAM", limit, offset);
+            async onChangeUser(e, limit, offset , textSearch) {
                 const {errors, getUser} = await useUser();
-                const data = await this.dataUser(limit , offset , e);
-                this.processing = true
+               // const data = await this.dataUser(limit , offset , e);
+                console.log("2");
+                const data = await axios.get('/api/users/listPagination?page='+1+'&limit='+limit+'&username='+e.target.value).then((response) => {
+                    console.log("response.data.data" , response.data.data.data);
+                    this.listData = response.data.data.data;
+                    this.items = response.data.data.data;
+                    this.pagination = response.data.pagination;
+                })
+                    this.processing = true
                 setTimeout(()=>{this.processing = false;
                 } , 2000)
                 // gắn cho state listData giá trị list users
-                this.listData = data
+                // this.listData = data
                 return {
                     errors,
                     data
                 }
             }
         },
+        beforeMount(){
+            this.getVueItems(this.pagination.current_page , 3 , this.textSearch);
+            },
         components: {
-            TableComponent
+            TableComponent,
+            Pagination
         },
         computed:{
             publishedBooksMessage() {
                 // `this` points to the component instance
                 return this.textSearch != "" ? 'Yes' : 'No'
+            },
+            isActived: function () {
+                return this.pagination.current_page;
+            },
+            pagesNumber: function () {
+                if (!this.pagination.to) {
+                    return [];
+                }
+                var from = this.pagination.current_page - this.offset;
+                if (from < 1) {
+                    from = 1;
+                }
+                var to = from + (this.offset * 2);
+                if (to >= this.pagination.last_page) {
+                    to = this.pagination.last_page;
+                }
+                var pagesArray = [];
+                while (from <= to) {
+                    pagesArray.push(from);
+                    from++;
+                }
+                return pagesArray;
             }
         }
 
