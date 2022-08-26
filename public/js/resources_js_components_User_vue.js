@@ -717,7 +717,7 @@ var render = function render() {
       staticClass: "mb-0 text-sm"
     }, [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c("p", {
       staticClass: "text-xs text-secondary mb-0"
-    }, [_vm._v("\n                            " + _vm._s(item.email))])])])]), _vm._v(" "), _c("td", [_c("p", {
+    }, [_vm._v("\r\n                            " + _vm._s(item.email))])])])]), _vm._v(" "), _c("td", [_c("p", {
       staticClass: "text-xs font-weight-bold mb-0"
     }, [_vm._v(_vm._s(item.email))])]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center text-sm"
@@ -748,7 +748,7 @@ var render = function render() {
         return _vm.changePage(_vm.pagination2.current_page - 1, 3, _vm.textSearch);
       }
     }
-  }, [_vm._v("\n                    <<\n                ")])]) : _vm._e(), _vm._v(" "), _vm._l(_vm.pagesNumber, function (page) {
+  }, [_vm._v("\r\n                    <<\r\n                ")])]) : _vm._e(), _vm._v(" "), _vm._l(_vm.pagesNumber, function (page) {
     return _c("li", {
       staticClass: "page-item",
       "class": [page == _vm.isActived ? "active" : ""]
@@ -796,13 +796,13 @@ var staticRenderFns = [function () {
 
   return _c("thead", [_c("tr", [_c("th", {
     staticClass: "text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-  }, [_vm._v("\n                Name\n            ")]), _vm._v(" "), _c("th", {
+  }, [_vm._v("\r\n                Name\r\n            ")]), _vm._v(" "), _c("th", {
     staticClass: "text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
-  }, [_vm._v("\n                Email\n            ")]), _vm._v(" "), _c("th", {
+  }, [_vm._v("\r\n                Email\r\n            ")]), _vm._v(" "), _c("th", {
     staticClass: "text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-  }, [_vm._v("\n                CreatedAt\n            ")]), _vm._v(" "), _c("th", {
+  }, [_vm._v("\r\n                CreatedAt\r\n            ")]), _vm._v(" "), _c("th", {
     staticClass: "text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-  }, [_vm._v("\n                UpdatedAt\n            ")]), _vm._v(" "), _c("th", {
+  }, [_vm._v("\r\n                UpdatedAt\r\n            ")]), _vm._v(" "), _c("th", {
     staticClass: "text-secondary opacity-7"
   })])]);
 }, function () {
@@ -818,7 +818,7 @@ var staticRenderFns = [function () {
       "data-toggle": "tooltip",
       "data-original-title": "Edit user"
     }
-  }, [_vm._v("\n                    Edit\n                ")])]);
+  }, [_vm._v("\r\n                    Edit\r\n                ")])]);
 }];
 render._withStripped = true;
 

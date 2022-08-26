@@ -24,12 +24,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'editUser',
   props: {
-    id: Number
+    id: String
   },
   methods: {
     getDataById: function getDataById(id) {
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var _useUser, errors, getUser, getUserWithPaginate;
+        var _useUser, errors, getUser, getUserWithPaginate, result;
 
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) {
@@ -42,6 +42,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
 
               case 3:
+                result = _context.sent;
+                console.log("this.$route.params.id", result);
+
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -51,8 +55,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   beforeMount: function beforeMount() {
-    console.log("props.id", this.id);
-    this.getDataById(props.id);
+    console.log("props.id", this.$route.params.id);
+    this.getDataById(this.$route.params.id);
   } // setup(props) {
   //     const { errors, getUser, getUserWithPaginate } = useUser()
   //
@@ -86,7 +90,7 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("h1", [_vm._v("\n    EDIT\n")]);
+  return _c("h1", [_vm._v("\n    Edit " + _vm._s(_vm.id) + " " + _vm._s(_vm.$route.params.id) + "\n")]);
 };
 
 var staticRenderFns = [];

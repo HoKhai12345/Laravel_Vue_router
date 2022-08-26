@@ -75,7 +75,10 @@ const routes = [
     {
         name : "editUser" ,
         path: '/users/:id',
-        component: editUser },
+        component: editUser,
+        props: true
+    },
+
     {
         name:"noPath",
         path:"*",
