@@ -17,9 +17,21 @@ export default function useUser() {
         let response = await axios.get('/api/users/listPagination' , { params: param })
         return response
     }
+    const updateUser = async (id) => {
+        errors.value = ''
+        try {
+            await axios.put('/api/companies/' + id, company.value)
+            await router.push({name: 'companies.index'})
+        } catch (e) {
+            if (e.response.status === 422) {
+                errors.value = e.response.data.errors
+            }
+        }
+    }
     return {
         errors,
         getUser,
-        getUserWithPaginate
+        getUserWithPaginate,
+        updateUser
     }
 }

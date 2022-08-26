@@ -4,7 +4,11 @@
         <div class="container-fluid py-4">
             <div class="row">
                 <div class="col-12">
-                <strong><a href="javascript:" id="homeRedirect" value="home" @click="handleRedirect" >Home</a> / <a>Users</a> </strong>
+                <strong>
+                    <router-link :to="{ name: 'dashboard'}">
+                        <a href="javascript:" id="homeRedirect" value="home" >Home</a>
+                    </router-link>
+                    / <a>Users</a> </strong>
                 </div>
                 <div class="col-12">
                     <div class="card my-4">
@@ -189,7 +193,6 @@
 
             handleRedirect: function(e){
                 const router = useRouter;
-                router.push({name: 'login'})
             },
             getVueItems: function(page , limit ,textSearch){
                 axios.get('/api/users/listPagination?page='+page+'&limit='+limit+'&username='+textSearch).then((response) => {

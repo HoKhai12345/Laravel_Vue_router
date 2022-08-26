@@ -21,6 +21,10 @@ const Dashboard = () => import('../components/Dashboard.vue' /* webpackChunkName
 
 const listUser = () => import('../components/User.vue')
 
+const notFound = () => import('../components/NotFound.vue')
+
+const editUser = () => import('../components/EditUser.vue')
+
 const routes = [
     {
         name:"login",
@@ -46,16 +50,6 @@ const routes = [
         meta:{
             middleware:"auth"
         },
-        children:[
-            {
-                name:"dashboard",
-                path: '/',
-                component: Dashboard,
-                meta:{
-                    title:`Dashboard`
-                }
-            }
-        ]
     },
     {
         path:"/users/list",
@@ -73,7 +67,27 @@ const routes = [
                 }
             }
         ]
-    }
+    },
+    // {
+    //     name:'users/edit/:id',
+    //     component:editUser,
+    // },
+    {
+        name : "editUser" ,
+        path: '/users/:id',
+        component: editUser },
+    {
+        name:"noPath",
+        path:"*",
+        redirect:"404_notfound",
+        // component:notFound,
+    },
+    {
+        name:'404_notfound',
+        path: "/404_notfound",
+        component:notFound
+    },
+
 ]
 
 // var router  = new VueRouter({

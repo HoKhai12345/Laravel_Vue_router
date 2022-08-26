@@ -10,7 +10,7 @@ import App from './components/App';``
 import Layout from './components/Layout';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import routes from './router/index';
+import routes from './router/index.js';
 
 // use router
 console.log("VueRouter",VueRouter);

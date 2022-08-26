@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Validator;
 
 //use Illuminate\Auth\Events\Validated;
@@ -14,22 +15,25 @@ use Illuminate\Support\Facades\Validator;
 class UserController extends Controller
 {
 
-    public function index(Request $request){
+    public function index(Request $request)
+    {
         $limit = $request->query('limit');
         $skip = $request->query('skip');
         $user = $request->query("username");
-        $dataFind = ["username"=>$user];
+        $dataFind = ["username" => $user];
         $listUser = User::where('name', 'LIKE', "%{$user}%")->limit($limit)->offset($skip)->get();
         return response()->json([
             'err' => 0,
             'data' => $listUser,
         ]);
     }
-    public function getUserWithPagination(Request $request){
+
+    public function getUserWithPagination(Request $request)
+    {
         $limit = $request->query('limit');
         $skip = $request->query('skip');
         $user = $request->query("username");
-        $dataFind = ["username"=>$user];
+        $dataFind = ["username" => $user];
         $items = User::where('name', 'LIKE', "%{$user}%")->paginate($limit);
 //        $items = User::latest()->paginate(4);
         $response = [
@@ -45,6 +49,43 @@ class UserController extends Controller
         ];
 
         return response()->json($response);
+
+    }
+
+    public function store(Request $request, $id)
+    {
+        try {
+            // Lấy param trong body raw
+            // $arrData = json_decode($request->getContent());
+            $validator = Validator::make($request->all(), [
+                'name' => 'required|unique:users|max:500'
+            ]);
+            if ($validator->fails()) {
+                return response()->json(
+                    [
+                        "err" => 1,
+                        "message" => "Tham số không hợp lệ"
+                    ]
+                );
+            }
+            User::where('id', $id)
+                ->update($request->all());
+            return response()->json(
+                [
+                    "err" => 0,
+                    "message" => "update thành công "
+                ]
+            );
+        } catch (\Exception $e) {
+//            return response()->json(
+//              [
+//                  "err" => 1,
+//                  "message" => $e->getMessage()
+//              ]
+//            );
+//            echo "message : " + $e->getMessage();
+        }
+
 
     }
 

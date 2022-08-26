@@ -147,9 +147,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   methods: {
     handleRedirect: function handleRedirect(e) {
       var router = _router_index__WEBPACK_IMPORTED_MODULE_4__["default"];
-      router.push({
-        name: 'login'
-      });
     },
     getVueItems: function getVueItems(page, limit, textSearch) {
       var _this = this;
@@ -443,16 +440,19 @@ var render = function render() {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-12"
-  }, [_c("strong", [_c("a", {
+  }, [_c("strong", [_c("router-link", {
+    attrs: {
+      to: {
+        name: "dashboard"
+      }
+    }
+  }, [_c("a", {
     attrs: {
       href: "javascript:",
       id: "homeRedirect",
       value: "home"
-    },
-    on: {
-      click: _vm.handleRedirect
     }
-  }, [_vm._v("Home")]), _vm._v(" / "), _c("a", [_vm._v("Users")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Home")])]), _vm._v("\n                / "), _c("a", [_vm._v("Users")])], 1)]), _vm._v(" "), _c("div", {
     staticClass: "col-12"
   }, [_c("div", {
     staticClass: "card my-4"
@@ -717,7 +717,7 @@ var render = function render() {
       staticClass: "mb-0 text-sm"
     }, [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c("p", {
       staticClass: "text-xs text-secondary mb-0"
-    }, [_vm._v("\r\n                            " + _vm._s(item.email))])])])]), _vm._v(" "), _c("td", [_c("p", {
+    }, [_vm._v("\n                            " + _vm._s(item.email))])])])]), _vm._v(" "), _c("td", [_c("p", {
       staticClass: "text-xs font-weight-bold mb-0"
     }, [_vm._v(_vm._s(item.email))])]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center text-sm"
@@ -748,7 +748,7 @@ var render = function render() {
         return _vm.changePage(_vm.pagination2.current_page - 1, 3, _vm.textSearch);
       }
     }
-  }, [_vm._v("\r\n                    <<\r\n                ")])]) : _vm._e(), _vm._v(" "), _vm._l(_vm.pagesNumber, function (page) {
+  }, [_vm._v("\n                    <<\n                ")])]) : _vm._e(), _vm._v(" "), _vm._l(_vm.pagesNumber, function (page) {
     return _c("li", {
       staticClass: "page-item",
       "class": [page == _vm.isActived ? "active" : ""]
@@ -796,13 +796,13 @@ var staticRenderFns = [function () {
 
   return _c("thead", [_c("tr", [_c("th", {
     staticClass: "text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-  }, [_vm._v("\r\n                Name\r\n            ")]), _vm._v(" "), _c("th", {
+  }, [_vm._v("\n                Name\n            ")]), _vm._v(" "), _c("th", {
     staticClass: "text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
-  }, [_vm._v("\r\n                Email\r\n            ")]), _vm._v(" "), _c("th", {
+  }, [_vm._v("\n                Email\n            ")]), _vm._v(" "), _c("th", {
     staticClass: "text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-  }, [_vm._v("\r\n                CreatedAt\r\n            ")]), _vm._v(" "), _c("th", {
+  }, [_vm._v("\n                CreatedAt\n            ")]), _vm._v(" "), _c("th", {
     staticClass: "text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-  }, [_vm._v("\r\n                UpdatedAt\r\n            ")]), _vm._v(" "), _c("th", {
+  }, [_vm._v("\n                UpdatedAt\n            ")]), _vm._v(" "), _c("th", {
     staticClass: "text-secondary opacity-7"
   })])]);
 }, function () {
@@ -818,7 +818,7 @@ var staticRenderFns = [function () {
       "data-toggle": "tooltip",
       "data-original-title": "Edit user"
     }
-  }, [_vm._v("\r\n                    Edit\r\n                ")])]);
+  }, [_vm._v("\n                    Edit\n                ")])]);
 }];
 render._withStripped = true;
 
@@ -914,10 +914,53 @@ function useUser() {
     };
   }();
 
+  var updateUser = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(id) {
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              errors.value = '';
+              _context3.prev = 1;
+              _context3.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().put('/api/companies/' + id, company.value);
+
+            case 4:
+              _context3.next = 6;
+              return router.push({
+                name: 'companies.index'
+              });
+
+            case 6:
+              _context3.next = 11;
+              break;
+
+            case 8:
+              _context3.prev = 8;
+              _context3.t0 = _context3["catch"](1);
+
+              if (_context3.t0.response.status === 422) {
+                errors.value = _context3.t0.response.data.errors;
+              }
+
+            case 11:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3, null, [[1, 8]]);
+    }));
+
+    return function updateUser(_x3) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
   return {
     errors: errors,
     getUser: getUser,
-    getUserWithPaginate: getUserWithPaginate
+    getUserWithPaginate: getUserWithPaginate,
+    updateUser: updateUser
   };
 }
 
