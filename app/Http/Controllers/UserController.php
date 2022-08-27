@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -50,6 +51,25 @@ class UserController extends Controller
 
         return response()->json($response);
 
+    }
+    public function detail(Request $request){
+        try {
+            $params = $request->all();
+            $result = User::find($params)->first();
+            return response()->json(
+                [
+                    "err" => 0,
+                    "data" => $result
+                ]
+            );
+        }catch (\Exception $exception){
+            return response()->json(
+                [
+                    "err" => 1 ,
+                    "message" => "A system error has occurred"
+                ]
+            );
+        }
     }
 
     public function store(Request $request, $id)

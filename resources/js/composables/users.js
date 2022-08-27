@@ -13,8 +13,12 @@ export default function useUser() {
         console.log("RESULT" , result);
         return result
     }
-    const getUserWithPaginate = async (param) => {
-        let response = await axios.get('/api/users/listPagination' , { params: param })
+    const getUserWithPaginate = async (params) => {
+        let response = await axios.get('/api/users/listPagination' , { params: params })
+        return response
+    }
+    const getdataRecord = async (params) => {
+        let response = await axios.get('/api/users/dataRecord' , { params: params })
         return response
     }
     const updateUser = async (id) => {
@@ -32,6 +36,7 @@ export default function useUser() {
         errors,
         getUser,
         getUserWithPaginate,
-        updateUser
+        updateUser,
+        getdataRecord
     }
 }

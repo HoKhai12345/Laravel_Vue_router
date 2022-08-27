@@ -6,15 +6,16 @@
                 <div class="col-12">
                 <strong>
                     <router-link :to="{ name: 'dashboard'}">
-                        <a href="javascript:" id="homeRedirect" value="home" >Home</a>
+                        Home
                     </router-link>
-                    / <a>Users</a> </strong>
+                </strong>
+                <strong>    / <a>Users</a> </strong>
                 </div>
                 <div class="col-12">
                     <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                                <h6 class="text-white text-capitalize ps-3">Danh sách User</h6>
+                                <h6 class="text-white text-capitaclize ps-3">Danh sách User</h6>
                             </div>
                         </div>
                         <div class="card-body px-0 pb-2">
@@ -76,11 +77,15 @@
                                                         class="text-secondary text-xs font-weight-bold">{{item.updated_at}}</span>
                                                 </td>
                                                 <td class="align-middle">
-                                                    <a href="javascript:;"
-                                                       class="text-secondary font-weight-bold text-xs"
-                                                       data-toggle="tooltip" data-original-title="Edit user">
-                                                        Edit
-                                                    </a>
+<!--                                                    <a href="javascript:;"-->
+<!--                                                       class="text-secondary font-weight-bold text-xs"-->
+<!--                                                       data-toggle="tooltip" data-original-title="Edit user">-->
+<!--                                                        Edit-->
+<!--                                                    </a>-->
+                                                    <div>
+                                                        <b-button v-b-modal.modal-lg1 variant="primary">lg modal</b-button>
+                                                        <b-modal id="modal-lg1" size="lg" title="Large Modal">Hello Large Modal!</b-modal>
+                                                    </div>
                                                 </td>
                                             </tr>
                                             </tbody>
@@ -163,7 +168,7 @@
     import TableComponent from "../components/childComponent/Table";
     import Pagination from "../components/Pagination";
     import  useRouter  from '../router/index';
-
+    import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
     export default {
         name: 'User',
         data() {

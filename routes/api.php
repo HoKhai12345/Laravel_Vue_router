@@ -27,4 +27,5 @@ Route::post('/login', [AuthController::class, 'login']);
 // Lấy ra list user
 Route::get("/users/list" , [UserController::class , 'index']);
 Route::get("/users/listPagination" , [UserController::class , 'getUserWithPagination']);
+Route::get("/users/dataRecord" , [UserController::class , 'detail']);
 Route::put("/users/edit/{id}" ,[UserController::class , 'store'] );

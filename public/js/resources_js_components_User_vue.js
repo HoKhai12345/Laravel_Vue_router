@@ -112,6 +112,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'User',
   data: function data() {
@@ -446,17 +447,11 @@ var render = function render() {
         name: "dashboard"
       }
     }
-  }, [_c("a", {
-    attrs: {
-      href: "javascript:",
-      id: "homeRedirect",
-      value: "home"
-    }
-  }, [_vm._v("Home")])]), _vm._v("\n                / "), _c("a", [_vm._v("Users")])], 1)]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                        Home\n                    ")])], 1), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c("div", {
     staticClass: "col-12"
   }, [_c("div", {
     staticClass: "card my-4"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
+  }, [_vm._m(1), _vm._v(" "), _c("div", {
     staticClass: "card-body px-0 pb-2"
   }, [_c("div", {
     staticClass: "row"
@@ -498,13 +493,13 @@ var render = function render() {
       type: "submit",
       disabled: _vm.processing
     }
-  }, [_vm._v("\n                                        " + _vm._s(_vm.processing ? "Please wait" : "Submit") + "\n                                    ")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                                            " + _vm._s(_vm.processing ? "Please wait" : "Submit") + "\n                                        ")])])]), _vm._v(" "), _c("div", {
     staticClass: "col-12"
   }, [_c("div", {
     staticClass: "table-responsive p-0"
   }, [_c("table", {
     staticClass: "table align-items-center mb-0"
-  }, [_vm._m(1), _vm._v(" "), _vm._l(_vm.listData, function (item) {
+  }, [_vm._m(2), _vm._v(" "), _vm._l(_vm.listData, function (item) {
     return _c("tbody", [_c("tr", [_c("td", [_c("div", {
       staticClass: "d-flex px-2 py-1"
     }, [_c("div"), _vm._v(" "), _c("div", {
@@ -513,7 +508,7 @@ var render = function render() {
       staticClass: "mb-0 text-sm"
     }, [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c("p", {
       staticClass: "text-xs text-secondary mb-0"
-    }, [_vm._v("\n                                                            " + _vm._s(item.email))])])])]), _vm._v(" "), _c("td", [_c("p", {
+    }, [_vm._v("\n                                                                " + _vm._s(item.email))])])])]), _vm._v(" "), _c("td", [_c("p", {
       staticClass: "text-xs font-weight-bold mb-0"
     }, [_vm._v(_vm._s(item.email))])]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center text-sm"
@@ -523,7 +518,26 @@ var render = function render() {
       staticClass: "align-middle text-center"
     }, [_c("span", {
       staticClass: "text-secondary text-xs font-weight-bold"
-    }, [_vm._v(_vm._s(item.updated_at))])]), _vm._v(" "), _vm._m(2, true)])]);
+    }, [_vm._v(_vm._s(item.updated_at))])]), _vm._v(" "), _c("td", {
+      staticClass: "align-middle"
+    }, [_c("div", [_c("b-button", {
+      directives: [{
+        name: "b-modal",
+        rawName: "v-b-modal.modal-lg1",
+        modifiers: {
+          "modal-lg1": true
+        }
+      }],
+      attrs: {
+        variant: "primary"
+      }
+    }, [_vm._v("lg modal")]), _vm._v(" "), _c("b-modal", {
+      attrs: {
+        id: "modal-lg1",
+        size: "lg",
+        title: "Large Modal"
+      }
+    }, [_vm._v("Hello Large Modal!")])], 1)])])]);
   })], 2), _vm._v(" "), _c("nav", {
     attrs: {
       "aria-label": "Page navigation example"
@@ -544,7 +558,7 @@ var render = function render() {
         return _vm.changePage(_vm.pagination.current_page - 1, 3, _vm.textSearch);
       }
     }
-  }, [_vm._v("\n                                                    <<\n                                                ")])]) : _vm._e(), _vm._v(" "), _vm._l(_vm.pagesNumber, function (page) {
+  }, [_vm._v("\n                                                        <<\n                                                    ")])]) : _vm._e(), _vm._v(" "), _vm._l(_vm.pagesNumber, function (page) {
     return _c("li", {
       staticClass: "page-item",
       "class": [page == _vm.isActived ? "active" : ""]
@@ -590,12 +604,17 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
+  return _c("strong", [_vm._v("    / "), _c("a", [_vm._v("Users")])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
   return _c("div", {
     staticClass: "card-header p-0 position-relative mt-n4 mx-3 z-index-2"
   }, [_c("div", {
     staticClass: "bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
   }, [_c("h6", {
-    staticClass: "text-white text-capitalize ps-3"
+    staticClass: "text-white text-capitaclize ps-3"
   }, [_vm._v("Danh sách User")])])]);
 }, function () {
   var _vm = this,
@@ -603,29 +622,15 @@ var staticRenderFns = [function () {
 
   return _c("thead", [_c("tr", [_c("th", {
     staticClass: "text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-  }, [_vm._v("\n                                                Name\n                                            ")]), _vm._v(" "), _c("th", {
+  }, [_vm._v("\n                                                    Name\n                                                ")]), _vm._v(" "), _c("th", {
     staticClass: "text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
-  }, [_vm._v("\n                                                Email\n                                            ")]), _vm._v(" "), _c("th", {
+  }, [_vm._v("\n                                                    Email\n                                                ")]), _vm._v(" "), _c("th", {
     staticClass: "text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-  }, [_vm._v("\n                                                CreatedAt\n                                            ")]), _vm._v(" "), _c("th", {
+  }, [_vm._v("\n                                                    CreatedAt\n                                                ")]), _vm._v(" "), _c("th", {
     staticClass: "text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-  }, [_vm._v("\n                                                UpdatedAt\n                                            ")]), _vm._v(" "), _c("th", {
+  }, [_vm._v("\n                                                    UpdatedAt\n                                                ")]), _vm._v(" "), _c("th", {
     staticClass: "text-secondary opacity-7"
   })])]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("td", {
-    staticClass: "align-middle"
-  }, [_c("a", {
-    staticClass: "text-secondary font-weight-bold text-xs",
-    attrs: {
-      href: "javascript:;",
-      "data-toggle": "tooltip",
-      "data-original-title": "Edit user"
-    }
-  }, [_vm._v("\n                                                    Edit\n                                                ")])]);
 }, function () {
   var _vm = this,
       _c = _vm._self._c;
@@ -640,15 +645,15 @@ var staticRenderFns = [function () {
     staticClass: "col-lg-6 mb-lg-0 mb-4"
   }, [_c("div", {
     staticClass: "copyright text-center text-sm text-muted text-lg-start"
-  }, [_vm._v("\n                            @2022\n                            "), _vm._v(" "), _vm._v("\n                            made with "), _c("i", {
+  }, [_vm._v("\n                                @2022\n                                "), _vm._v(" "), _vm._v("\n                                made with "), _c("i", {
     staticClass: "fa fa-heart"
-  }), _vm._v(" by\n                            "), _c("a", {
+  }), _vm._v(" by\n                                "), _c("a", {
     staticClass: "font-weight-bold",
     attrs: {
       href: "https://www.creative-tim.com",
       target: "_blank"
     }
-  }, [_vm._v("Creative\n                                Tim")]), _vm._v("\n                            for a better web.\n                        ")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Creative\n                                    Tim")]), _vm._v("\n                                for a better web.\n                            ")])]), _vm._v(" "), _c("div", {
     staticClass: "col-lg-6"
   }, [_c("ul", {
     staticClass: "nav nav-footer justify-content-center justify-content-lg-end"
@@ -660,7 +665,7 @@ var staticRenderFns = [function () {
       href: "https://www.creative-tim.com",
       target: "_blank"
     }
-  }, [_vm._v("Creative\n                                    Tim")])]), _vm._v(" "), _c("li", {
+  }, [_vm._v("Creative\n                                        Tim")])]), _vm._v(" "), _c("li", {
     staticClass: "nav-item"
   }, [_c("a", {
     staticClass: "nav-link text-muted",
@@ -717,7 +722,7 @@ var render = function render() {
       staticClass: "mb-0 text-sm"
     }, [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c("p", {
       staticClass: "text-xs text-secondary mb-0"
-    }, [_vm._v("\r\n                            " + _vm._s(item.email))])])])]), _vm._v(" "), _c("td", [_c("p", {
+    }, [_vm._v("\n                            " + _vm._s(item.email))])])])]), _vm._v(" "), _c("td", [_c("p", {
       staticClass: "text-xs font-weight-bold mb-0"
     }, [_vm._v(_vm._s(item.email))])]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center text-sm"
@@ -748,7 +753,7 @@ var render = function render() {
         return _vm.changePage(_vm.pagination2.current_page - 1, 3, _vm.textSearch);
       }
     }
-  }, [_vm._v("\r\n                    <<\r\n                ")])]) : _vm._e(), _vm._v(" "), _vm._l(_vm.pagesNumber, function (page) {
+  }, [_vm._v("\n                    <<\n                ")])]) : _vm._e(), _vm._v(" "), _vm._l(_vm.pagesNumber, function (page) {
     return _c("li", {
       staticClass: "page-item",
       "class": [page == _vm.isActived ? "active" : ""]
@@ -796,13 +801,13 @@ var staticRenderFns = [function () {
 
   return _c("thead", [_c("tr", [_c("th", {
     staticClass: "text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-  }, [_vm._v("\r\n                Name\r\n            ")]), _vm._v(" "), _c("th", {
+  }, [_vm._v("\n                Name\n            ")]), _vm._v(" "), _c("th", {
     staticClass: "text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
-  }, [_vm._v("\r\n                Email\r\n            ")]), _vm._v(" "), _c("th", {
+  }, [_vm._v("\n                Email\n            ")]), _vm._v(" "), _c("th", {
     staticClass: "text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-  }, [_vm._v("\r\n                CreatedAt\r\n            ")]), _vm._v(" "), _c("th", {
+  }, [_vm._v("\n                CreatedAt\n            ")]), _vm._v(" "), _c("th", {
     staticClass: "text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-  }, [_vm._v("\r\n                UpdatedAt\r\n            ")]), _vm._v(" "), _c("th", {
+  }, [_vm._v("\n                UpdatedAt\n            ")]), _vm._v(" "), _c("th", {
     staticClass: "text-secondary opacity-7"
   })])]);
 }, function () {
@@ -818,7 +823,7 @@ var staticRenderFns = [function () {
       "data-toggle": "tooltip",
       "data-original-title": "Edit user"
     }
-  }, [_vm._v("\r\n                    Edit\r\n                ")])]);
+  }, [_vm._v("\n                    Edit\n                ")])]);
 }];
 render._withStripped = true;
 
@@ -886,7 +891,7 @@ function useUser() {
   }();
 
   var getUserWithPaginate = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(param) {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(params) {
       var response;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) {
@@ -894,7 +899,7 @@ function useUser() {
             case 0:
               _context2.next = 2;
               return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/users/listPagination', {
-                params: param
+                params: params
               });
 
             case 2:
@@ -914,45 +919,74 @@ function useUser() {
     };
   }();
 
-  var updateUser = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(id) {
+  var getdataRecord = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(params) {
+      var response;
       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
+              _context3.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/users/dataRecord', {
+                params: params
+              });
+
+            case 2:
+              response = _context3.sent;
+              return _context3.abrupt("return", response);
+
+            case 4:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    return function getdataRecord(_x3) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
+  var updateUser = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(id) {
+      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
               errors.value = '';
-              _context3.prev = 1;
-              _context3.next = 4;
+              _context4.prev = 1;
+              _context4.next = 4;
               return axios__WEBPACK_IMPORTED_MODULE_0___default().put('/api/companies/' + id, company.value);
 
             case 4:
-              _context3.next = 6;
+              _context4.next = 6;
               return router.push({
                 name: 'companies.index'
               });
 
             case 6:
-              _context3.next = 11;
+              _context4.next = 11;
               break;
 
             case 8:
-              _context3.prev = 8;
-              _context3.t0 = _context3["catch"](1);
+              _context4.prev = 8;
+              _context4.t0 = _context4["catch"](1);
 
-              if (_context3.t0.response.status === 422) {
-                errors.value = _context3.t0.response.data.errors;
+              if (_context4.t0.response.status === 422) {
+                errors.value = _context4.t0.response.data.errors;
               }
 
             case 11:
             case "end":
-              return _context3.stop();
+              return _context4.stop();
           }
         }
-      }, _callee3, null, [[1, 8]]);
+      }, _callee4, null, [[1, 8]]);
     }));
 
-    return function updateUser(_x3) {
-      return _ref3.apply(this, arguments);
+    return function updateUser(_x4) {
+      return _ref4.apply(this, arguments);
     };
   }();
 
@@ -960,7 +994,8 @@ function useUser() {
     errors: errors,
     getUser: getUser,
     getUserWithPaginate: getUserWithPaginate,
-    updateUser: updateUser
+    updateUser: updateUser,
+    getdataRecord: getdataRecord
   };
 }
 

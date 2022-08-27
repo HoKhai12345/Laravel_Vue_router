@@ -23,29 +23,38 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'editUser',
+  data: function data() {
+    return {
+      dataRecord: Array,
+      errors: Array
+    };
+  },
   props: {
     id: String
   },
   methods: {
     getDataById: function getDataById(id) {
+      var _this = this;
+
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var _useUser, errors, getUser, getUserWithPaginate, result;
+        var _useUser, errors, getUser, getUserWithPaginate, getdataRecord, result;
 
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _useUser = (0,_composables_users_js__WEBPACK_IMPORTED_MODULE_0__["default"])(), errors = _useUser.errors, getUser = _useUser.getUser, getUserWithPaginate = _useUser.getUserWithPaginate;
+                _useUser = (0,_composables_users_js__WEBPACK_IMPORTED_MODULE_0__["default"])(), errors = _useUser.errors, getUser = _useUser.getUser, getUserWithPaginate = _useUser.getUserWithPaginate, getdataRecord = _useUser.getdataRecord;
                 _context.next = 3;
-                return getUserWithPaginate({
+                return getdataRecord({
                   "id": id
                 });
 
               case 3:
                 result = _context.sent;
-                console.log("this.$route.params.id", result);
+                console.log("result", result);
+                _this.dataRecord = result.data.data;
 
-              case 5:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -90,10 +99,150 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("h1", [_vm._v("\n    Edit " + _vm._s(_vm.id) + " " + _vm._s(_vm.$route.params.id) + "\n")]);
+  return _c("div", [_vm._v("\n    Edit " + _vm._s(_vm.id) + " " + _vm._s(_vm.$route.params.id) + "\n    "), _vm.errors ? _c("div", _vm._l(_vm.errors, function (v, k) {
+    return _c("div", {
+      key: k,
+      staticClass: "bg-red-500 text-white rounded font-bold mb-4 shadow-lg py-2 px-4 pr-0"
+    }, _vm._l(v, function (error) {
+      return _c("p", {
+        key: error,
+        staticClass: "text-sm"
+      }, [_vm._v("\n                " + _vm._s(error) + "\n            ")]);
+    }), 0);
+  }), 0) : _vm._e(), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("form", {
+    staticClass: "space-y-6",
+    on: {
+      submit: function submit($event) {
+        $event.preventDefault();
+        return _vm.saveCompany.apply(null, arguments);
+      }
+    }
+  }, [_c("div", {
+    staticClass: "space-y-4 rounded-md shadow-sm"
+  }, [_c("div", [_c("label", {
+    staticClass: "block text-sm font-medium text-gray-700",
+    attrs: {
+      "for": "name"
+    }
+  }, [_vm._v("Name")]), _vm._v(" "), _c("div", {
+    staticClass: "mt-1"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.dataRecord.name,
+      expression: "dataRecord.name"
+    }],
+    staticClass: "block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50",
+    attrs: {
+      type: "text",
+      name: "name",
+      id: "name"
+    },
+    domProps: {
+      value: _vm.dataRecord.name
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.dataRecord, "name", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("div", [_c("label", {
+    staticClass: "block text-sm font-medium text-gray-700",
+    attrs: {
+      "for": "email"
+    }
+  }, [_vm._v("Email")]), _vm._v(" "), _c("div", {
+    staticClass: "mt-1"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.dataRecord.email,
+      expression: "dataRecord.email"
+    }],
+    staticClass: "block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50",
+    attrs: {
+      type: "text",
+      name: "email",
+      id: "email"
+    },
+    domProps: {
+      value: _vm.dataRecord.email
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.dataRecord, "email", $event.target.value);
+      }
+    }
+  })])])]), _vm._v(" "), _c("button", {
+    staticClass: "inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase bg-gray-800 rounded-md border border-transparent ring-gray-300 transition duration-150 ease-in-out hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring disabled:opacity-25",
+    attrs: {
+      type: "submit"
+    }
+  }, [_vm._v("\n            Save\n        ")])])]);
 };
 
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("form", [_c("div", {
+    staticClass: "mb-3"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "exampleInputEmail1"
+    }
+  }, [_vm._v("Email address")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "email",
+      id: "exampleInputEmail1",
+      "aria-describedby": "emailHelp"
+    }
+  }), _vm._v(" "), _c("div", {
+    staticClass: "form-text",
+    attrs: {
+      id: "emailHelp"
+    }
+  }, [_vm._v("We'll never share your email with anyone else.")])]), _vm._v(" "), _c("div", {
+    staticClass: "mb-3"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "exampleInputPassword1"
+    }
+  }, [_vm._v("Password")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "password",
+      id: "exampleInputPassword1"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "mb-3 form-check"
+  }, [_c("input", {
+    staticClass: "form-check-input",
+    attrs: {
+      type: "checkbox",
+      id: "exampleCheck1"
+    }
+  }), _vm._v(" "), _c("label", {
+    staticClass: "form-check-label",
+    attrs: {
+      "for": "exampleCheck1"
+    }
+  }, [_vm._v("Check me out")])]), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-primary",
+    attrs: {
+      type: "submit"
+    }
+  }, [_vm._v("Submit")])]);
+}];
 render._withStripped = true;
 
 
@@ -160,7 +309,7 @@ function useUser() {
   }();
 
   var getUserWithPaginate = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(param) {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(params) {
       var response;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) {
@@ -168,7 +317,7 @@ function useUser() {
             case 0:
               _context2.next = 2;
               return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/users/listPagination', {
-                params: param
+                params: params
               });
 
             case 2:
@@ -188,45 +337,74 @@ function useUser() {
     };
   }();
 
-  var updateUser = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(id) {
+  var getdataRecord = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(params) {
+      var response;
       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
+              _context3.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/users/dataRecord', {
+                params: params
+              });
+
+            case 2:
+              response = _context3.sent;
+              return _context3.abrupt("return", response);
+
+            case 4:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    return function getdataRecord(_x3) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
+  var updateUser = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(id) {
+      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
               errors.value = '';
-              _context3.prev = 1;
-              _context3.next = 4;
+              _context4.prev = 1;
+              _context4.next = 4;
               return axios__WEBPACK_IMPORTED_MODULE_0___default().put('/api/companies/' + id, company.value);
 
             case 4:
-              _context3.next = 6;
+              _context4.next = 6;
               return router.push({
                 name: 'companies.index'
               });
 
             case 6:
-              _context3.next = 11;
+              _context4.next = 11;
               break;
 
             case 8:
-              _context3.prev = 8;
-              _context3.t0 = _context3["catch"](1);
+              _context4.prev = 8;
+              _context4.t0 = _context4["catch"](1);
 
-              if (_context3.t0.response.status === 422) {
-                errors.value = _context3.t0.response.data.errors;
+              if (_context4.t0.response.status === 422) {
+                errors.value = _context4.t0.response.data.errors;
               }
 
             case 11:
             case "end":
-              return _context3.stop();
+              return _context4.stop();
           }
         }
-      }, _callee3, null, [[1, 8]]);
+      }, _callee4, null, [[1, 8]]);
     }));
 
-    return function updateUser(_x3) {
-      return _ref3.apply(this, arguments);
+    return function updateUser(_x4) {
+      return _ref4.apply(this, arguments);
     };
   }();
 
@@ -234,7 +412,8 @@ function useUser() {
     errors: errors,
     getUser: getUser,
     getUserWithPaginate: getUserWithPaginate,
-    updateUser: updateUser
+    updateUser: updateUser,
+    getdataRecord: getdataRecord
   };
 }
 
