@@ -21,11 +21,11 @@ export default function useUser() {
         let response = await axios.get('/api/users/dataRecord' , { params: params })
         return response
     }
-    const updateUser = async (id) => {
+    const updateUser = async (id , param) => {
         errors.value = ''
         try {
-            await axios.put('/api/companies/' + id, company.value)
-            await router.push({name: 'companies.index'})
+            await axios.put('/users/edit/' + id, param)
+            // await router.push({name: 'companies.index'})
         } catch (e) {
             if (e.response.status === 422) {
                 errors.value = e.response.data.errors

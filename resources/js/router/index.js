@@ -56,6 +56,7 @@ const routes = [
         }
     },
     {
+        name: "dashboard",
         path:"/",
         component:DahboardLayout,
         meta:{
@@ -63,32 +64,47 @@ const routes = [
         },
     },
     {
-        path:"/users/list",
+
+    path:"/users/list",
         component:listUser,
         // meta:{
         //     middleware:"auth"
         // },
         children:[
             {
-                name:"dashboard",
-                path: '/',
+                name:"users.list",
+                path: '/list',
                 component: listUser,
                 meta:{
                     title:`listUser`
                 }
-            }
+            },
+            // {
+            //     name : "users.edit" ,
+            //     path: '/edit/:id',
+            //     component: editUser,
+            //     props: true
+            // },
+
         ]
     },
-    // {
-    //     name:'users/edit/:id',
-    //     component:editUser,
-    // },
     {
-        name : "editUser" ,
-        path: '/users/:id',
-        component: editUser,
-        props: true
+        name:'users.edit',
+        path: 'users/:id/edit',
+        component:editUser,
+        props:true
+        // children: [
+        //     {
+        //         name:"users.list",
+        //         path: '/list2',
+        //         component: listUser,
+        //         meta:{
+        //             title:`listUser`
+        //         }
+        //     },
+        //     ]
     },
+
 
     {
         name:"noPath",

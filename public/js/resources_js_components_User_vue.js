@@ -117,6 +117,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   name: 'User',
   data: function data() {
     return {
+      form: {
+        email: '',
+        name: '',
+        id: '',
+        food: null,
+        checked: []
+      },
+      dataRecord: Object,
+      foods: [{
+        text: 'Select One',
+        value: null
+      }, 'Carrots', 'Beans', 'Tomatoes', 'Corn'],
+      show: true,
       processing: false,
       textSearch: "",
       listData: [],
@@ -146,17 +159,75 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     this.getVueItems(this.pagination.current_page);
   },
   methods: {
+    onSubmit: function onSubmit(event) {
+      event.preventDefault();
+      console.log("v", event.preventDefault());
+
+      var _useUser = (0,_composables_users__WEBPACK_IMPORTED_MODULE_1__["default"])(),
+          errors = _useUser.errors,
+          updateUser = _useUser.updateUser;
+
+      updateUser();
+      alert(JSON.stringify(this.form));
+    },
+    onReset: function onReset(event) {
+      var _this = this;
+
+      event.preventDefault(); // Reset our form values
+
+      this.form.email = '';
+      this.form.name = '';
+      this.form.food = null;
+      this.form.checked = []; // Trick to reset/clear native browser form validation state
+
+      this.show = false;
+      this.$nextTick(function () {
+        _this.show = true;
+      });
+    },
+    modalId: function modalId(i) {
+      return 'modal' + i;
+    },
     handleRedirect: function handleRedirect(e) {
       var router = _router_index__WEBPACK_IMPORTED_MODULE_4__["default"];
     },
+    getDataById: function getDataById(id) {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var _useUser2, errors, getUser, getUserWithPaginate, getdataRecord, updateUser, result;
+
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _useUser2 = (0,_composables_users__WEBPACK_IMPORTED_MODULE_1__["default"])(), errors = _useUser2.errors, getUser = _useUser2.getUser, getUserWithPaginate = _useUser2.getUserWithPaginate, getdataRecord = _useUser2.getdataRecord, updateUser = _useUser2.updateUser;
+                _context.next = 3;
+                return getdataRecord({
+                  "id": id
+                });
+
+              case 3:
+                result = _context.sent;
+                console.log("result", result);
+                _this2.dataRecord = result.data.data;
+
+              case 6:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
     getVueItems: function getVueItems(page, limit, textSearch) {
-      var _this = this;
+      var _this3 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/users/listPagination?page=' + page + '&limit=' + limit + '&username=' + textSearch).then(function (response) {
         console.log("response", response.data.data.data);
-        _this.listData = response.data.data.data;
-        _this.items = response.data.data.data;
-        _this.pagination = response.data.pagination;
+        _this3.listData = response.data.data.data;
+        _this3.items = response.data.data.data;
+        _this3.pagination = response.data.pagination;
       });
     },
     changePage: function changePage(page, limit, username) {
@@ -164,24 +235,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.getVueItems(page, limit, username);
     },
     onChangeUser: function onChangeUser(e, limit) {
-      var _this2 = this;
+      var _this4 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
         var _yield$useUser, errors, getUser, getUserWithPaginate, response;
 
-        return _regeneratorRuntime().wrap(function _callee$(_context) {
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) {
-            switch (_context.prev = _context.next) {
+            switch (_context2.prev = _context2.next) {
               case 0:
-                _context.next = 2;
+                _context2.next = 2;
                 return (0,_composables_users__WEBPACK_IMPORTED_MODULE_1__["default"])();
 
               case 2:
-                _yield$useUser = _context.sent;
+                _yield$useUser = _context2.sent;
                 errors = _yield$useUser.errors;
                 getUser = _yield$useUser.getUser;
                 getUserWithPaginate = _yield$useUser.getUserWithPaginate;
-                _context.next = 8;
+                _context2.next = 8;
                 return getUserWithPaginate({
                   "page": 1,
                   "limit": limit,
@@ -189,25 +260,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
 
               case 8:
-                response = _context.sent;
-                _this2.listData = response.data.data.data;
-                _this2.items = response.data.data.data;
-                _this2.pagination = response.data.pagination;
-                _this2.processing = true;
+                response = _context2.sent;
+                _this4.listData = response.data.data.data;
+                _this4.items = response.data.data.data;
+                _this4.pagination = response.data.pagination;
+                _this4.processing = true;
                 setTimeout(function () {
-                  _this2.processing = false;
+                  _this4.processing = false;
                 }, 1000);
-                return _context.abrupt("return", {
+                return _context2.abrupt("return", {
                   errors: errors,
                   response: response
                 });
 
               case 15:
               case "end":
-                return _context.stop();
+                return _context2.stop();
             }
           }
-        }, _callee);
+        }, _callee2);
       }))();
     }
   },
@@ -523,21 +594,107 @@ var render = function render() {
     }, [_c("div", [_c("b-button", {
       directives: [{
         name: "b-modal",
-        rawName: "v-b-modal.modal-lg1",
-        modifiers: {
-          "modal-lg1": true
-        }
+        rawName: "v-b-modal",
+        value: _vm.modalId(item.id),
+        expression: "modalId(item.id)"
       }],
+      on: {
+        click: function click($event) {
+          return _vm.getDataById(item.id);
+        }
+      }
+    }, [_vm._v("Edit")]), _vm._v(" "), _c("b-modal", {
       attrs: {
+        id: "modal" + item.id,
+        title: "BootstrapVue"
+      },
+      on: {
+        ok: _vm.onSubmit
+      }
+    }, [_c("div", [_vm.show ? _c("b-form", {
+      on: {
+        submit: _vm.onSubmit,
+        reset: _vm.onReset
+      }
+    }, [_c("b-form-group", {
+      attrs: {
+        id: "input-group-1",
+        label: "Email address:",
+        "label-for": "input-1",
+        description: "We'll never share your email with anyone else."
+      }
+    }, [_c("b-form-input", {
+      attrs: {
+        id: "input-1",
+        type: "email",
+        required: ""
+      },
+      model: {
+        value: _vm.dataRecord.email ? _vm.dataRecord.email : _vm.form.email,
+        callback: function callback($$v) {
+          _vm.$set(_vm.dataRecord.email ? _vm.dataRecord.email : _vm.form, "email", $$v);
+        },
+        expression: "dataRecord.email?dataRecord.email:form.email"
+      }
+    })], 1), _vm._v(" "), _c("b-form-group", {
+      attrs: {
+        id: "input-group-2",
+        label: "Your Name:",
+        "label-for": "input-2"
+      }
+    }, [_c("b-form-input", {
+      attrs: {
+        id: "input-2",
+        placeholder: "Enter name",
+        type: "name",
+        required: ""
+      },
+      model: {
+        value: _vm.dataRecord.name ? _vm.dataRecord.name : _vm.form.name,
+        callback: function callback($$v) {
+          _vm.$set(_vm.dataRecord.name ? _vm.dataRecord.name : _vm.form, "name", $$v);
+        },
+        expression: "dataRecord.name?dataRecord.name:form.name"
+      }
+    })], 1), _vm._v(" "), _c("b-form-group", {
+      attrs: {
+        id: "input-group-7",
+        label: "Id:",
+        "label-for": "input-7"
+      }
+    }, [_c("b-form-input", {
+      attrs: {
+        id: "input-7",
+        disabled: "",
+        placeholder: "Enter id",
+        type: "id",
+        required: ""
+      },
+      model: {
+        value: _vm.dataRecord.id,
+        callback: function callback($$v) {
+          _vm.$set(_vm.dataRecord, "id", $$v);
+        },
+        expression: "dataRecord.id"
+      }
+    })], 1), _vm._v(" "), _c("b-button", {
+      attrs: {
+        type: "submit",
         variant: "primary"
       }
-    }, [_vm._v("lg modal")]), _vm._v(" "), _c("b-modal", {
+    }, [_vm._v("Submit")]), _vm._v(" "), _c("b-button", {
       attrs: {
-        id: "modal-lg1",
-        size: "lg",
-        title: "Large Modal"
+        type: "reset",
+        variant: "danger"
       }
-    }, [_vm._v("Hello Large Modal!")])], 1)])])]);
+    }, [_vm._v("Reset")])], 1) : _vm._e(), _vm._v(" "), _c("b-card", {
+      staticClass: "mt-3",
+      attrs: {
+        header: "Form Data Result"
+      }
+    }, [_c("pre", {
+      staticClass: "m-0"
+    }, [_vm._v(_vm._s(_vm.form))])])], 1)])], 1)])])]);
   })], 2), _vm._v(" "), _c("nav", {
     attrs: {
       "aria-label": "Page navigation example"
@@ -722,7 +879,7 @@ var render = function render() {
       staticClass: "mb-0 text-sm"
     }, [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c("p", {
       staticClass: "text-xs text-secondary mb-0"
-    }, [_vm._v("\n                            " + _vm._s(item.email))])])])]), _vm._v(" "), _c("td", [_c("p", {
+    }, [_vm._v("\r\n                            " + _vm._s(item.email))])])])]), _vm._v(" "), _c("td", [_c("p", {
       staticClass: "text-xs font-weight-bold mb-0"
     }, [_vm._v(_vm._s(item.email))])]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center text-sm"
@@ -753,7 +910,7 @@ var render = function render() {
         return _vm.changePage(_vm.pagination2.current_page - 1, 3, _vm.textSearch);
       }
     }
-  }, [_vm._v("\n                    <<\n                ")])]) : _vm._e(), _vm._v(" "), _vm._l(_vm.pagesNumber, function (page) {
+  }, [_vm._v("\r\n                    <<\r\n                ")])]) : _vm._e(), _vm._v(" "), _vm._l(_vm.pagesNumber, function (page) {
     return _c("li", {
       staticClass: "page-item",
       "class": [page == _vm.isActived ? "active" : ""]
@@ -801,13 +958,13 @@ var staticRenderFns = [function () {
 
   return _c("thead", [_c("tr", [_c("th", {
     staticClass: "text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-  }, [_vm._v("\n                Name\n            ")]), _vm._v(" "), _c("th", {
+  }, [_vm._v("\r\n                Name\r\n            ")]), _vm._v(" "), _c("th", {
     staticClass: "text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
-  }, [_vm._v("\n                Email\n            ")]), _vm._v(" "), _c("th", {
+  }, [_vm._v("\r\n                Email\r\n            ")]), _vm._v(" "), _c("th", {
     staticClass: "text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-  }, [_vm._v("\n                CreatedAt\n            ")]), _vm._v(" "), _c("th", {
+  }, [_vm._v("\r\n                CreatedAt\r\n            ")]), _vm._v(" "), _c("th", {
     staticClass: "text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-  }, [_vm._v("\n                UpdatedAt\n            ")]), _vm._v(" "), _c("th", {
+  }, [_vm._v("\r\n                UpdatedAt\r\n            ")]), _vm._v(" "), _c("th", {
     staticClass: "text-secondary opacity-7"
   })])]);
 }, function () {
@@ -823,7 +980,7 @@ var staticRenderFns = [function () {
       "data-toggle": "tooltip",
       "data-original-title": "Edit user"
     }
-  }, [_vm._v("\n                    Edit\n                ")])]);
+  }, [_vm._v("\r\n                    Edit\r\n                ")])]);
 }];
 render._withStripped = true;
 
@@ -949,7 +1106,7 @@ function useUser() {
   }();
 
   var updateUser = /*#__PURE__*/function () {
-    var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(id) {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(id, param) {
       return _regeneratorRuntime().wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
@@ -957,35 +1114,29 @@ function useUser() {
               errors.value = '';
               _context4.prev = 1;
               _context4.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().put('/api/companies/' + id, company.value);
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().put('/users/edit/' + id, param);
 
             case 4:
-              _context4.next = 6;
-              return router.push({
-                name: 'companies.index'
-              });
-
-            case 6:
-              _context4.next = 11;
+              _context4.next = 9;
               break;
 
-            case 8:
-              _context4.prev = 8;
+            case 6:
+              _context4.prev = 6;
               _context4.t0 = _context4["catch"](1);
 
               if (_context4.t0.response.status === 422) {
                 errors.value = _context4.t0.response.data.errors;
               }
 
-            case 11:
+            case 9:
             case "end":
               return _context4.stop();
           }
         }
-      }, _callee4, null, [[1, 8]]);
+      }, _callee4, null, [[1, 6]]);
     }));
 
-    return function updateUser(_x4) {
+    return function updateUser(_x4, _x5) {
       return _ref4.apply(this, arguments);
     };
   }();
