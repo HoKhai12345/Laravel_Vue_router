@@ -67,6 +67,7 @@ const routes = [
 
     path:"/users/list",
         component:listUser,
+        props: { title: "List users", page: "Users" },
         // meta:{
         //     middleware:"auth"
         // },

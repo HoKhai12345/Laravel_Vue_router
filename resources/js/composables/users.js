@@ -24,7 +24,9 @@ export default function useUser() {
     const updateUser = async (id , param) => {
         errors.value = ''
         try {
-            await axios.put('/users/edit/' + id, param)
+
+           const result = await axios.put('/api/users/edit/' + id, param);
+           return result.data
             // await router.push({name: 'companies.index'})
         } catch (e) {
             if (e.response.status === 422) {

@@ -97,13 +97,13 @@ class UserController extends Controller
                 ]
             );
         } catch (\Exception $e) {
-//            return response()->json(
-//              [
-//                  "err" => 1,
-//                  "message" => $e->getMessage()
-//              ]
-//            );
-//            echo "message : " + $e->getMessage();
+            return response()->json(
+              [
+                  "err" => 1,
+                  "message" => $e->getMessage()
+              ]
+            );
+            echo "message : " + $e->getMessage();
         }
 
 

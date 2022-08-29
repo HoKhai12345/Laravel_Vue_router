@@ -4,18 +4,18 @@
         <div class="container-fluid py-4">
             <div class="row">
                 <div class="col-12">
-                <strong>
+                    <strong>
                     <router-link :to="{ name: 'dashboard'}">
                         Home
                     </router-link>
                 </strong>
-                <strong>    / <a>Users</a> </strong>
+                <strong>/<a>{{page}}</a> </strong>
                 </div>
                 <div class="col-12">
                     <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                                <h6 class="text-white text-capitaclize ps-3">Danh sách User</h6>
+                                <h6 class="text-white text-capitaclize ps-3">{{title}}</h6>
                             </div>
                         </div>
                         <div class="card-body px-0 pb-2">
@@ -33,6 +33,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="table-responsive p-0">
+                                        <b-alert show variant="warning" :hidden="!processing" ><h1 style="color: white">{{alertEdit}}</h1></b-alert>
                                         <table class="table align-items-center mb-0">
                                             <thead>
                                             <tr>
@@ -83,20 +84,20 @@
 <!--                                                        Edit-->
 <!--                                                    </a>-->
                                                     <div>
-                                                        <b-button v-b-modal="modalId(item.id)" @click="getDataById(item.id)">Edit</b-button>
+                                                        <b-button v-b-modal="modalId(item.id)" hide-footer @click="getDataById(item.id)">Edit</b-button>
 
-                                                        <b-modal :id="'modal' + item.id" @ok="onSubmit" title="BootstrapVue">
+                                                        <b-modal :ref="'my-modal1' + item.id" :id="'modal' + item.id" @ok="onSubmit" title="Edit" >
                                                             <div>
                                                                 <b-form @submit="onSubmit" @reset="onReset" v-if="show">
                                                                     <b-form-group
                                                                         id="input-group-1"
-                                                                        label="Email address:"
+                                                                         label="Email address:"
                                                                         label-for="input-1"
                                                                         description="We'll never share your email with anyone else."
                                                                     >
                                                                         <b-form-input
                                                                             id="input-1"
-                                                                            v-model="dataRecord.email?dataRecord.email:form.email"
+                                                                            v-model="form.email"
                                                                             type="email"
                                                                             required
                                                                         ></b-form-input>
@@ -105,7 +106,7 @@
                                                                     <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
                                                                         <b-form-input
                                                                             id="input-2"
-                                                                            v-model="dataRecord.name?dataRecord.name:form.name"
+                                                                            v-model="form.name"
                                                                             placeholder="Enter name"
                                                                             type="name"
                                                                             required
@@ -115,7 +116,7 @@
                                                                         <b-form-input
                                                                             id="input-7"
                                                                             disabled
-                                                                            v-model="dataRecord.id"
+                                                                            v-model="form.id"
                                                                             placeholder="Enter id"
                                                                             type="id"
                                                                             required
@@ -141,11 +142,12 @@
 <!--                                                                        </b-form-checkbox-group>-->
 <!--                                                                    </b-form-group>-->
 
-                                                                    <b-button type="submit" variant="primary">Submit</b-button>
+                                                                    <b-button type="submit"  @click="$bvModal.hide('modal'+item.id)" variant="primary">Submit</b-button>
                                                                     <b-button type="reset" variant="danger">Reset</b-button>
                                                                 </b-form>
                                                                 <b-card class="mt-3" header="Form Data Result">
                                                                     <pre class="m-0">{{ form }}</pre>
+                                                                    <pre class="m-0">{{ dataRecord }}</pre>
                                                                 </b-card>
                                                             </div>
 
@@ -238,14 +240,17 @@
         name: 'User',
         data() {
             return {
+                alertUpdate: "",
                 form: {
                     email: '',
                     name: '',
                     id:'',
-                    food: null,
-                    checked: []
+                    // food: null,
+                    // checked: []
                 },
-                dataRecord: Object,
+                dataRecord: {
+                },
+                alertEdit : null,
                 foods: [{ text: 'Select One', value: null }, 'Carrots', 'Beans', 'Tomatoes', 'Corn'],
                 show: true,
                 processing: false,
@@ -266,24 +271,38 @@
                 fillItem : {'title':'','description':'','id':''}
             }
         },
+        props : {
+            title : String,
+            page : String
+        },
         ready : function(){
             this.getVueItems(this.pagination.current_page);
         },
         methods: {
-            onSubmit(event) {
+           async onSubmit(event) {
                 event.preventDefault();
-                console.log("v",event.preventDefault());
                 const { errors , updateUser} = useUser();
-                updateUser();
-                alert(JSON.stringify(this.form))
+                const resultUpdate = await updateUser(this.form.id,this.form);
+                console.log("resultUpdate" , resultUpdate);
+                this.processing = true
+                this.alertEdit = resultUpdate.message
+                const dataFormInput = this.form;
+                this.processing = false;
+                this.getVueItems(this.pagination.current_page , 3 , this.textSearch);
+
+               this.processing = true
+               setTimeout(()=>{this.processing = false;
+               } , 3000)
+                // this.$router.push('/users/list')
+                // alert(JSON.stringify(this.form))
             },
             onReset(event) {
                 event.preventDefault()
                 // Reset our form values
                 this.form.email = ''
                 this.form.name = ''
-                this.form.food = null
-                this.form.checked = []
+                // this.form.food = null
+                // this.form.checked = []
                 // Trick to reset/clear native browser form validation state
                 this.show = false
                 this.$nextTick(() => {
@@ -299,8 +318,10 @@
             async getDataById(id){
                 const { errors, getUser, getUserWithPaginate , getdataRecord , updateUser} = useUser();
                 const result = await getdataRecord({"id" : id })
-                console.log("result" , result);
-                this.dataRecord = result.data.data
+                this.dataRecord = result.data.data;
+                this.form.name = result.data.data.name;
+                this.form.email = result.data.data.email;
+                this.form.id = result.data.data.id
             },
             getVueItems: function(page , limit ,textSearch){
                 axios.get('/api/users/listPagination?page='+page+'&limit='+limit+'&username='+textSearch).then((response) => {
@@ -327,7 +348,7 @@
                     errors,
                     response
                 }
-            }
+            },
         },
         beforeMount(){
             this.getVueItems(this.pagination.current_page , 3 , this.textSearch);

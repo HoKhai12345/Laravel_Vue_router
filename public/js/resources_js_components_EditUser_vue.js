@@ -99,7 +99,7 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_vm._v("\r\n    Edit " + _vm._s(_vm.id) + " " + _vm._s(_vm.$route.params.id) + "\r\n    "), _vm.errors ? _c("div", _vm._l(_vm.errors, function (v, k) {
+  return _c("div", [_vm._v("\n    Edit " + _vm._s(_vm.id) + " " + _vm._s(_vm.$route.params.id) + "\n    "), _vm.errors ? _c("div", _vm._l(_vm.errors, function (v, k) {
     return _c("div", {
       key: k,
       staticClass: "bg-red-500 text-white rounded font-bold mb-4 shadow-lg py-2 px-4 pr-0"
@@ -107,7 +107,7 @@ var render = function render() {
       return _c("p", {
         key: error,
         staticClass: "text-sm"
-      }, [_vm._v("\r\n                " + _vm._s(error) + "\r\n            ")]);
+      }, [_vm._v("\n                " + _vm._s(error) + "\n            ")]);
     }), 0);
   }), 0) : _vm._e(), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("form", {
     staticClass: "space-y-6",
@@ -184,7 +184,7 @@ var render = function render() {
     attrs: {
       type: "submit"
     }
-  }, [_vm._v("\r\n            Save\r\n        ")])])]);
+  }, [_vm._v("\n            Save\n        ")])])]);
 };
 
 var staticRenderFns = [function () {
@@ -368,6 +368,7 @@ function useUser() {
 
   var updateUser = /*#__PURE__*/function () {
     var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(id, param) {
+      var result;
       return _regeneratorRuntime().wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
@@ -375,26 +376,26 @@ function useUser() {
               errors.value = '';
               _context4.prev = 1;
               _context4.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().put('/users/edit/' + id, param);
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().put('/api/users/edit/' + id, param);
 
             case 4:
-              _context4.next = 9;
-              break;
+              result = _context4.sent;
+              return _context4.abrupt("return", result.data);
 
-            case 6:
-              _context4.prev = 6;
+            case 8:
+              _context4.prev = 8;
               _context4.t0 = _context4["catch"](1);
 
               if (_context4.t0.response.status === 422) {
                 errors.value = _context4.t0.response.data.errors;
               }
 
-            case 9:
+            case 11:
             case "end":
               return _context4.stop();
           }
         }
-      }, _callee4, null, [[1, 6]]);
+      }, _callee4, null, [[1, 8]]);
     }));
 
     return function updateUser(_x4, _x5) {
