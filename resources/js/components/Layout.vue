@@ -136,6 +136,6 @@
 </template>
 <script>
     export default {
-        name: 'App',
+        name: 'Layout',
     }
 </script>

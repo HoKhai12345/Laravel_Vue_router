@@ -341,9 +341,9 @@
                     this.listData = response.data.data.data;
                     this.items = response.data.data.data;
                     this.pagination = response.data.pagination;
-                    this.processing = true
-                setTimeout(()=>{this.processing = false;
-                } , 1000)
+                //     this.processing = true
+                // setTimeout(()=>{this.processing = false;
+                // } , 1000)
                 return {
                     errors,
                     response

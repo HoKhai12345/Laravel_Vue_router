@@ -299,17 +299,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 response = _context3.sent;
                 _this5.listData = response.data.data.data;
                 _this5.items = response.data.data.data;
-                _this5.pagination = response.data.pagination;
-                _this5.processing = true;
-                setTimeout(function () {
-                  _this5.processing = false;
-                }, 1000);
+                _this5.pagination = response.data.pagination; //     this.processing = true
+                // setTimeout(()=>{this.processing = false;
+                // } , 1000)
+
                 return _context3.abrupt("return", {
                   errors: errors,
                   response: response
                 });
 
-              case 15:
+              case 13:
               case "end":
                 return _context3.stop();
             }

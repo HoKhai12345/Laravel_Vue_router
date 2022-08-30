@@ -35,7 +35,10 @@ class UserController extends Controller
         $skip = $request->query('skip');
         $user = $request->query("username");
         $dataFind = ["username" => $user];
-        $items = User::where('name', 'LIKE', "%{$user}%")->paginate($limit);
+        $items = User::where('users.name', 'LIKE', "%{$user}%")
+//            ->select('users.id , department.id')
+            ->join('department', 'users.department_id', '=', 'department.id')
+            ->paginate($limit);
 //        $items = User::latest()->paginate(4);
         $response = [
             'pagination' => [

@@ -23,7 +23,9 @@ const Register = () => import('../components/Register.vue' /* webpackChunkName: 
 /* Guest Component */
 
 /* Layouts */
-const DahboardLayout = () => import('../components/Layouts/Dashboard.vue' /* webpackChunkName: "resource/js/components/layouts/dashboard" */)
+const DahboardLayout = () => import('../components/Layouts/Dashboard.vue' /* webpackChunkName: "resource/js/components/layouts/dashboard" */);
+/* Vuex component */
+const Vuex = () => import('../components/Vuex.vue' /* webpackChunkName: "resource/js/components/layouts/dashboard" */)
 /* Layouts */
 
 /* Authenticated Component */
@@ -56,8 +58,13 @@ const routes = [
         }
     },
     {
+        name: "vuex",
+        path:"/vuex",
+        component:Vuex,
+    },
+    {
         name: "dashboard",
-        path:"/",
+        path:"",
         component:DahboardLayout,
         meta:{
             middleware:"auth"

@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h1>VUEJS</h1>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a href="https://techvblogs.com/?ref=project" target="_blank" class="navbar-brand">TechvBlogs</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,7 +38,7 @@
         name:"dashboard-layout",
         data(){
             return {
-                user:this.$store.state.auth.user
+                 user:this.$store.state.auth.user
             }
         },
         methods:{

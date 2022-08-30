@@ -2,6 +2,7 @@
     <div class="container">
         <div class="header">
             <ul class="nav justify-content-center">
+                <h1>VUEJS</h1>
                 <li class="nav-item">
                     <router-link
                         class="nav-link"

@@ -9,12 +9,14 @@ Vue.component('app', require('./components/App'));
 import App from './components/App';``
 import Layout from './components/Layout';
 import Vue from 'vue';
+import Vuex from 'vuex';
 import VueRouter from 'vue-router';
 import routes from './router/index.js';
-
+import store from './store/index.js';
 // use router
 console.log("VueRouter",VueRouter);
 Vue.use(VueRouter);
+Vue.use(Vuex);
 
 // khai báo dùng router này
 const router = new VueRouter({
@@ -25,8 +27,10 @@ const router = new VueRouter({
 // và cuối cùng là tạo 1 instance Vue và render tại phần tử có id là app,
 // render tại component App và dùng router đã khai báo ở trên
 const app = new Vue({
+    store,
     el: '#app',
     render: h => h(Layout),
     router
 });
+app.use(store);
 
