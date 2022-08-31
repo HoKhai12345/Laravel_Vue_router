@@ -117,6 +117,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   name: 'User',
   data: function data() {
     return {
+      status: "false",
       alertUpdate: "",
       form: {
         email: '',
@@ -622,7 +623,21 @@ var render = function render() {
   }, [_vm._v(_vm._s(_vm.alertEdit))])]), _vm._v(" "), _c("table", {
     staticClass: "table align-items-center mb-0"
   }, [_vm._m(0), _vm._v(" "), _vm._l(_vm.listData, function (item) {
-    return _c("tbody", [_c("tr", [_c("td", [_c("div", {
+    return _c("tbody", [_c("tr", [_c("td", [_c("b-form-checkbox", {
+      attrs: {
+        id: "checkbox-1" + item.id,
+        name: "checkbox-1",
+        value: "true",
+        "unchecked-value": "false"
+      },
+      model: {
+        value: _vm.status,
+        callback: function callback($$v) {
+          _vm.status = $$v;
+        },
+        expression: "status"
+      }
+    }, [_vm._v("\n                                                        " + _vm._s(_vm.status) + "\n                                                    ")])], 1), _vm._v(" "), _c("td", [_c("div", {
       staticClass: "d-flex px-2 py-1"
     }, [_c("div"), _vm._v(" "), _c("div", {
       staticClass: "d-flex flex-column justify-content-center"
@@ -632,7 +647,9 @@ var render = function render() {
       staticClass: "text-xs text-secondary mb-0"
     }, [_vm._v("\n                                                                " + _vm._s(item.email))])])])]), _vm._v(" "), _c("td", [_c("p", {
       staticClass: "text-xs font-weight-bold mb-0"
-    }, [_vm._v(_vm._s(item.email))])]), _vm._v(" "), _c("td", {
+    }, [_vm._v(_vm._s(item.email))])]), _vm._v(" "), _c("td", [_c("p", {
+      staticClass: "text-xs font-weight-bold mb-0"
+    }, [_vm._v(_vm._s(item.department_name))])]), _vm._v(" "), _c("td", {
       staticClass: "align-middle text-center text-sm"
     }, [_c("span", {
       staticClass: "badge badge-sm bg-gradient-secondary"
@@ -733,7 +750,38 @@ var render = function render() {
         },
         expression: "form.id"
       }
-    })], 1), _vm._v(" "), _c("b-button", {
+    })], 1), _vm._v(" "), _c("b-form-group", {
+      attrs: {
+        id: "input-group-4"
+      },
+      scopedSlots: _vm._u([{
+        key: "default",
+        fn: function fn(_ref) {
+          var ariaDescribedby = _ref.ariaDescribedby;
+          return [_c("b-form-checkbox-group", {
+            attrs: {
+              id: "checkboxes-4",
+              "aria-describedby": ariaDescribedby
+            },
+            model: {
+              value: _vm.form.checked,
+              callback: function callback($$v) {
+                _vm.$set(_vm.form, "checked", $$v);
+              },
+              expression: "form.checked"
+            }
+          }, [_c("b-form-checkbox", {
+            attrs: {
+              value: "me"
+            }
+          }, [_vm._v("Check me out")]), _vm._v(" "), _c("b-form-checkbox", {
+            attrs: {
+              value: "that"
+            }
+          }, [_vm._v("Check that out")])], 1)];
+        }
+      }], null, true)
+    }), _vm._v(" "), _c("b-button", {
       attrs: {
         type: "submit",
         variant: "primary"
@@ -829,6 +877,8 @@ var staticRenderFns = [function () {
   }, [_vm._v("\n                                                    Name\n                                                ")]), _vm._v(" "), _c("th", {
     staticClass: "text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
   }, [_vm._v("\n                                                    Email\n                                                ")]), _vm._v(" "), _c("th", {
+    staticClass: "text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
+  }, [_vm._v("\n                                                    Department\n                                                ")]), _vm._v(" "), _c("th", {
     staticClass: "text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
   }, [_vm._v("\n                                                    CreatedAt\n                                                ")]), _vm._v(" "), _c("th", {
     staticClass: "text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"

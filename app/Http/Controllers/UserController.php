@@ -36,7 +36,7 @@ class UserController extends Controller
         $user = $request->query("username");
         $dataFind = ["username" => $user];
         $items = User::where('users.name', 'LIKE', "%{$user}%")
-//            ->select('users.id , department.id')
+            ->select(['users.id', 'department.name as department_name' , 'users.department_id' , 'users.name' , 'email' , 'users.created_at' , 'users.updated_at' , 'department.office' , 'department.thumbnail'])
             ->join('department', 'users.department_id', '=', 'department.id')
             ->paginate($limit);
 //        $items = User::latest()->paginate(4);

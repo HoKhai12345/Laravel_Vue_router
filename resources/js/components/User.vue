@@ -43,6 +43,9 @@
                                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                     Email
                                                 </th>
+                                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                    Department
+                                                </th>
                                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     CreatedAt
                                                 </th>
@@ -54,6 +57,17 @@
                                             </thead>
                                             <tbody v-for="item in listData">
                                             <tr>
+                                                <td>
+                                                    <b-form-checkbox
+                                                        :id="'checkbox-1'+item.id"
+                                                        v-model="status"
+                                                        name="checkbox-1"
+                                                        value="true"
+                                                        unchecked-value="false"
+                                                    >
+                                                        {{status}}
+                                                    </b-form-checkbox>
+                                                </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div>
@@ -68,6 +82,10 @@
                                                 </td>
                                                 <td>
                                                     <p class="text-xs font-weight-bold mb-0">{{item.email}}</p>
+                                                    <!--                                                    <p class="text-xs text-secondary mb-0">Developer</p>-->
+                                                </td>
+                                                <td>
+                                                    <p class="text-xs font-weight-bold mb-0">{{item.department_name}}</p>
                                                     <!--                                                    <p class="text-xs text-secondary mb-0">Developer</p>-->
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
@@ -131,16 +149,16 @@
 <!--                                                                        ></b-form-select>-->
 <!--                                                                    </b-form-group>-->
 
-<!--                                                                    <b-form-group id="input-group-4" v-slot="{ ariaDescribedby }">-->
-<!--                                                                        <b-form-checkbox-group-->
-<!--                                                                            v-model="form.checked"-->
-<!--                                                                            id="checkboxes-4"-->
-<!--                                                                            :aria-describedby="ariaDescribedby"-->
-<!--                                                                        >-->
-<!--                                                                            <b-form-checkbox value="me">Check me out</b-form-checkbox>-->
-<!--                                                                            <b-form-checkbox value="that">Check that out</b-form-checkbox>-->
-<!--                                                                        </b-form-checkbox-group>-->
-<!--                                                                    </b-form-group>-->
+                                                                    <b-form-group id="input-group-4" v-slot="{ ariaDescribedby }">
+                                                                        <b-form-checkbox-group
+                                                                            v-model="form.checked"
+                                                                            id="checkboxes-4"
+                                                                            :aria-describedby="ariaDescribedby"
+                                                                        >
+                                                                            <b-form-checkbox value="me">Check me out</b-form-checkbox>
+                                                                            <b-form-checkbox value="that">Check that out</b-form-checkbox>
+                                                                        </b-form-checkbox-group>
+                                                                    </b-form-group>
 
                                                                     <b-button type="submit"  @click="$bvModal.hide('modal'+item.id)" variant="primary">Submit</b-button>
                                                                     <b-button type="reset" variant="danger">Reset</b-button>
@@ -240,6 +258,7 @@
         name: 'User',
         data() {
             return {
+                status: "false",
                 alertUpdate: "",
                 form: {
                     email: '',
